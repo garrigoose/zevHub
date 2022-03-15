@@ -20,6 +20,8 @@
 - Python
 - Flask
 - Peewee
+- Socket.IO
+- Amazon S3
 
 **Models**
 
