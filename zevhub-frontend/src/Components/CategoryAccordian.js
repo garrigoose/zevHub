@@ -11,47 +11,47 @@ const CategoryAccordian = () => {
           <Accordion.Body>
             <Row xs={1} md={4} className='g-4'>
               {Array.from({ length: 4 }).map((_, idx) => (
-                <MiniProductCard />
+                <MiniProductCard key={idx} />
               ))}
             </Row>
           </Accordion.Body>
         </Accordion.Item>
-        <Accordion.Item eventKey='1' alwaysOpen>
+        <Accordion.Item eventKey='1'>
           <Accordion.Header>Category #2</Accordion.Header>
           <Accordion.Body>
             <Row xs={1} md={4} className='g-4'>
               {Array.from({ length: 4 }).map((_, idx) => (
-                <MiniProductCard />
+                <MiniProductCard key={idx} />
               ))}
             </Row>
           </Accordion.Body>
         </Accordion.Item>
-        <Accordion.Item eventKey='2' alwaysOpen>
+        <Accordion.Item eventKey='2'>
           <Accordion.Header>Category #3</Accordion.Header>
           <Accordion.Body>
             <Row xs={1} md={4} className='g-4'>
               {Array.from({ length: 4 }).map((_, idx) => (
-                <MiniProductCard />
+                <MiniProductCard key={idx} />
               ))}
             </Row>
           </Accordion.Body>
         </Accordion.Item>
-        <Accordion.Item eventKey='3' alwaysOpen>
+        <Accordion.Item eventKey='3'>
           <Accordion.Header>Category #4</Accordion.Header>
           <Accordion.Body>
             <Row xs={1} md={4} className='g-4'>
               {Array.from({ length: 4 }).map((_, idx) => (
-                <MiniProductCard />
+                <MiniProductCard key={idx} />
               ))}
             </Row>
           </Accordion.Body>
         </Accordion.Item>
-        <Accordion.Item eventKey='4' alwaysOpen>
+        <Accordion.Item eventKey='4'>
           <Accordion.Header>Category #5</Accordion.Header>
           <Accordion.Body>
             <Row xs={1} md={4} className='g-4'>
               {Array.from({ length: 4 }).map((_, idx) => (
-                <MiniProductCard />
+                <MiniProductCard key={idx} />
               ))}
             </Row>
           </Accordion.Body>
