@@ -1,15 +1,18 @@
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header';
-import Searchbar from './Components/Searchbar';
-import HomePageCards from './Components/HomePageCards';
+import HomePage from './Components/HomePage';
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      {/* <Searchbar /> */}
-      <HomePageCards />
+      <div>
+        <Routes>
+          <Route path='/' element={<HomePage />}></Route>
+        </Routes>
+      </div>
     </div>
   );
 }
