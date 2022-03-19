@@ -13,6 +13,8 @@ import {
   ButtonGroup,
 } from 'react-bootstrap';
 import { Cart2 } from 'react-bootstrap-icons';
+import LoginForm from '../User/LoginForm';
+import RegisterForm from '../User/RegisterForm';
 
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -115,12 +117,15 @@ const Header = () => {
         <Modal.Header closeButton>
           <Modal.Title>Please Login</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <LoginForm />
+          {/* <TestForm /> */}
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleCloseLogin}>
+          <Button variant='outline-success' onClick={handleCloseLogin}>
             Close
           </Button>
-          <Button variant='primary' onClick={handleCloseLogin}>
+          <Button variant='outline-success' onClick={handleCloseLogin}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -131,12 +136,14 @@ const Header = () => {
         <Modal.Header closeButton>
           <Modal.Title>Please Register</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <RegisterForm />
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleCloseRegister}>
+          <Button variant='outline-success' onClick={handleCloseRegister}>
             Close
           </Button>
-          <Button variant='primary' onClick={handleCloseRegister}>
+          <Button variant='outline-success' onClick={handleCloseRegister}>
             Save Changes
           </Button>
         </Modal.Footer>

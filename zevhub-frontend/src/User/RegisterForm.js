@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { Form, Input, Button, Checkbox } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
-const LoginForm = (props) => {
+const RegisterForm = (props) => {
   //   const dispatch = useDispatch();
   const rememberMeChecked = localStorage.getItem('rememberMe') ? true : false;
   const [formErrorMessage, setFormErrorMessage] = useState('');
@@ -104,6 +104,16 @@ const LoginForm = (props) => {
                       onBlur={handleBlur}
                     />
                   </Form.Group>
+                  <Form.Group className='mb-3' controlId='formBasicPassword'>
+                    <Form.Control
+                      id='password'
+                      placeholder='Enter your password again'
+                      type='password'
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Form.Group>
                   <Form.Group className='mb-3' controlId='formBasicCheckbox'>
                     <Form.Check
                       type='checkbox'
@@ -123,7 +133,7 @@ const LoginForm = (props) => {
                       disabled={isSubmitting}
                       onSubmit={handleSubmit}
                     >
-                      Log in
+                      Register
                     </Button>
                   </div>
                 </Form>
@@ -136,4 +146,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
