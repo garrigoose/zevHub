@@ -6,6 +6,7 @@ import HomePage from './Components/HomePage';
 import CategoriesBar from './Components/CategoriesBar';
 import ResultsView from './Components/ResultsView';
 import ProductPage from './Product/ProductPage';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/products/:id' element={<ProductPage />}></Route>
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

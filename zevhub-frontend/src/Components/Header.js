@@ -70,9 +70,6 @@ const Header = () => {
                 title={currentUser}
                 className='m-2 mt-0 mb-0'
               >
-                {/* <NavDropdown.Item href='#action3' onClick={handleShow}>
-                Login
-              </NavDropdown.Item> */}
                 <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
                   Login
                 </NavDropdown.Item>
@@ -83,11 +80,6 @@ const Header = () => {
                 <NavDropdown.Item href='#action5'>
                   Something else here
                 </NavDropdown.Item>
-                {/* <Dropdown.Item eventKey='1'>Action</Dropdown.Item>
-                <Dropdown.Item eventKey='2'>Another action</Dropdown.Item>
-                <Dropdown.Item eventKey='3'>Something else here</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item eventKey='4'>Separated link</Dropdown.Item> */}
               </DropdownType>
             ))}
             {/* <NavDropdown
@@ -105,9 +97,29 @@ const Header = () => {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown> */}
-            <Button variant='outline-success'>
+            {/* <Button variant='outline-success'>
               <Cart2 />
-            </Button>
+            </Button> */}
+            {[SplitButton].map((DropdownType, idx) => (
+              <DropdownType
+                as={ButtonGroup}
+                key={idx}
+                id={`dropdown-button-drop-${idx}`}
+                // size='sm'
+                variant='outline-success'
+                title={<Cart2 />}
+                className='m-2 mt-0 mb-0'
+              >
+                <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
+                  Cart Item #1
+                </NavDropdown.Item>
+                <NavDropdown.Item href='#action4' onClick={handleShowRegister}>
+                  Cart Item #2
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href='#action5'>Checkout</NavDropdown.Item>
+              </DropdownType>
+            ))}
           </Navbar.Collapse>
         </Container>
       </Navbar>

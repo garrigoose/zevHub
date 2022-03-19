@@ -13,29 +13,26 @@
 - JS
 - CSS
 - HTML
-- React with Next.js
+- React
+- Redux
+- Bootstrap
 
 **Back-End**
 
-- Python
-- Flask
-- Peewee
+- Express
+- Node.JS
+- Mongoose
+- Multer
 - Socket.IO
 - Amazon S3
 
 **Models**
 
-- Buyer
+- User
   - email
   - password
   - starred products
-- Seller
-  - email
-  - password
   - products for sale
-- Admin
-  - email
-  - password
 - Product
   - name
   - description
@@ -45,6 +42,12 @@
 ### Features
 
 - Listings
-- Messages
+- Messages - stretch
 - Favorites
-- Location API
+- Location API - stretch
+
+### MVP
+
+- List products with pictures
+- Browse, organise and search products
+- Purchase a product and decrement it's inventory
