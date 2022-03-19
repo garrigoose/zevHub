@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Accordion } from 'react-bootstrap';
-import MiniProductCard from './MiniProductCard';
+import MiniProductCard from '../Product/MiniProductCard';
 
 const CategoryAccordian = () => {
   return (

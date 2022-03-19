@@ -5,7 +5,7 @@ import Header from './Components/Header';
 import HomePage from './Components/HomePage';
 import CategoriesBar from './Components/CategoriesBar';
 import ResultsView from './Components/ResultsView';
-import ProductPage from './Components/ProductPage';
+import ProductPage from './Product/ProductPage';
 
 function App() {
   return (

@@ -19,7 +19,7 @@ const Header = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [currentUser, setCurrentUser] = useState('User');
 
-  const handleClose = () => setShowLogin(false);
+  const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
 
   const handleCloseRegister = () => setShowRegister(false);
@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar bg='light' expand='lg'>
+      <Navbar sticky='top' bg='light' expand='lg' className='sticky-top '>
         <Container fluid>
           <Navbar.Brand href='#'>Z E V H U B</Navbar.Brand>
           <Navbar.Toggle aria-controls='navbarScroll' />
@@ -66,6 +66,7 @@ const Header = () => {
                 // size='sm'
                 variant='outline-success'
                 title={currentUser}
+                className='m-2 mt-0 mb-0'
               >
                 {/* <NavDropdown.Item href='#action3' onClick={handleShow}>
                 Login
@@ -110,23 +111,23 @@ const Header = () => {
       </Navbar>
 
       {/* login modal */}
-      <Modal show={showLogin} onHide={handleClose}>
+      <Modal show={showLogin} onHide={handleCloseLogin}>
         <Modal.Header closeButton>
           <Modal.Title>Please Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button variant='secondary' onClick={handleCloseLogin}>
             Close
           </Button>
-          <Button variant='primary' onClick={handleClose}>
+          <Button variant='primary' onClick={handleCloseLogin}>
             Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
 
       {/* Register modal */}
-      <Modal show={showLogin} onHide={handleCloseRegister}>
+      <Modal show={showRegister} onHide={handleCloseRegister}>
         <Modal.Header closeButton>
           <Modal.Title>Please Register</Modal.Title>
         </Modal.Header>

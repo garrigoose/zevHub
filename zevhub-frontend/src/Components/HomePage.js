@@ -2,14 +2,15 @@ import React from 'react';
 import Image from 'react-bootstrap/Image';
 import HomePageCards from './HomePageCards';
 import CategoryAccordian from './CategoryAccordian';
+import headerImage from '../Images/94797-tesla-roadster-tesla-electric-cars-4k-hd.jpeg';
+import { Container } from 'react-bootstrap';
 
 const HomePage = () => {
   return (
     <div>
-      <Image
-        fluid
-        src='https://media-exp1.licdn.com/dms/image/C561BAQEiUDTmePo9Eg/company-background_10000/0/1622346071419?e=1647565200&v=beta&t=LnHDstR6LNEWMYFTVMgKrtn4FyW5B_4pzrT9K7hPnec'
-      ></Image>
+      <div id='header-image-div'>
+        <Image src={headerImage} id='header-image'></Image>
+      </div>
       <HomePageCards />
       <CategoryAccordian />
     </div>

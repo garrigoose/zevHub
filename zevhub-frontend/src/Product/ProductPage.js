@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
 import ProductImage from './ProductImage';
 import ProductInfo from './ProductInfo';
-import { addToCart } from './actions/User_Actions';
+import { addToCart } from '../actions/User_Actions';
 // import { useDispatch } from 'react-redux';
 import Image from 'react-bootstrap/Image';
 

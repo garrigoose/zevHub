@@ -9,7 +9,7 @@ import {
   ButtonGroup,
   Dropdown,
 } from 'react-bootstrap';
-import ProductCard from './ProductCard';
+import ProductCard from '../Product/ProductCard';
 
 const ResultsView = () => {
   return (
