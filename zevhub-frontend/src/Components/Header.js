@@ -36,9 +36,14 @@ const Header = () => {
               <Nav.Link href='#action1'>Home</Nav.Link>
               <Nav.Link href='#action2'>Sell</Nav.Link>
 
-              <Nav.Link href='#' disabled>
-                Link
-              </Nav.Link>
+              <NavDropdown title='Buy' id='navbarScrollingDropdown'>
+                <NavDropdown.Item href='#action3'>Cars</NavDropdown.Item>
+                <NavDropdown.Item href='#action4'>Bikes</NavDropdown.Item>
+                {/* <NavDropdown.Divider /> */}
+                <NavDropdown.Item href='#action5'>Scooters</NavDropdown.Item>
+                <NavDropdown.Item href='#action6'>Skateboards</NavDropdown.Item>
+                <NavDropdown.Item href='#action7'>Accessories</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
             <Form className='d-flex'>
               <FormControl
