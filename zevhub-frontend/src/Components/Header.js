@@ -9,14 +9,18 @@ import {
   FormControl,
   Button,
   Modal,
+  SplitButton,
+  ButtonGroup,
 } from 'react-bootstrap';
+import { Cart2 } from 'react-bootstrap-icons';
 
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [currentUser, setCurrentUser] = useState('User');
 
   const handleClose = () => setShowLogin(false);
-  const handleShow = () => setShowLogin(true);
+  const handleShowLogin = () => setShowLogin(true);
 
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
@@ -54,7 +58,39 @@ const Header = () => {
               />
               <Button variant='outline-success'>Search</Button>
             </Form>
-            <NavDropdown title='Hi, User!' id='navbarScrollingDropdown'>
+            {[SplitButton].map((DropdownType, idx) => (
+              <DropdownType
+                as={ButtonGroup}
+                key={idx}
+                id={`dropdown-button-drop-${idx}`}
+                // size='sm'
+                variant='outline-success'
+                title={currentUser}
+              >
+                {/* <NavDropdown.Item href='#action3' onClick={handleShow}>
+                Login
+              </NavDropdown.Item> */}
+                <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
+                  Login
+                </NavDropdown.Item>
+                <NavDropdown.Item href='#action4' onClick={handleShowRegister}>
+                  Register
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href='#action5'>
+                  Something else here
+                </NavDropdown.Item>
+                {/* <Dropdown.Item eventKey='1'>Action</Dropdown.Item>
+                <Dropdown.Item eventKey='2'>Another action</Dropdown.Item>
+                <Dropdown.Item eventKey='3'>Something else here</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey='4'>Separated link</Dropdown.Item> */}
+              </DropdownType>
+            ))}
+            {/* <NavDropdown
+              title='Hi, ${currentUser}!'
+              id='navbarScrollingDropdown'
+            >
               <NavDropdown.Item href='#action3' onClick={handleShow}>
                 Login
               </NavDropdown.Item>
@@ -65,7 +101,10 @@ const Header = () => {
               <NavDropdown.Item href='#action5'>
                 Something else here
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
+            <Button variant='outline-success'>
+              <Cart2 />
+            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
