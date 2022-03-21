@@ -1,4 +1,4 @@
-import React from 'react';
+import '../App.css';
 import { useState } from 'react';
 import {
   Nav,
@@ -28,99 +28,99 @@ const Header = () => {
   const handleShowRegister = () => setShowRegister(true);
 
   return (
-    <div>
+    <div className='Header'>
       <Navbar sticky='top' bg='light' expand='lg' className='sticky-top '>
-        <Container fluid>
-          <Navbar.Brand href='#'>Z E V H U B</Navbar.Brand>
+        <Container fluid sticky='top'>
+          <Navbar.Brand sticky='top' href='#'>
+            Z E V H U B
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbarScroll' />
           <Navbar.Collapse id='navbarScroll'>
-            <Nav
-              className='me-auto my-2 my-lg-0'
-              style={{ maxHeight: '100px' }}
-              navbarScroll
-            >
-              <Nav.Link href='/'>Home</Nav.Link>
-              <Nav.Link href='#action2'>Sell</Nav.Link>
-
-              <NavDropdown title='Buy' id='navbarScrollingDropdown'>
-                <NavDropdown.Item href='#action3'>Cars</NavDropdown.Item>
-                <NavDropdown.Item href='#action4'>Bikes</NavDropdown.Item>
-                {/* <NavDropdown.Divider /> */}
-                <NavDropdown.Item href='#action5'>Scooters</NavDropdown.Item>
-                <NavDropdown.Item href='#action6'>Skateboards</NavDropdown.Item>
-                <NavDropdown.Item href='#action7'>Accessories</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Form className='d-flex'>
-              <FormControl
-                type='search'
-                placeholder='Search'
-                className='me-2'
-                aria-label='Search'
-              />
-              <Button variant='outline-success'>Search</Button>
-            </Form>
-            {[SplitButton].map((DropdownType, idx) => (
-              <DropdownType
-                as={ButtonGroup}
-                key={idx}
-                id={`dropdown-button-drop-${idx}`}
-                // size='sm'
-                variant='outline-success'
-                title={currentUser}
-                className='m-2 mt-0 mb-0'
+            <Container>
+              <Nav
+                className='me-auto my-2 my-lg-0'
+                style={{ maxHeight: '100px' }}
+                navbarScroll
               >
-                <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
-                  Login
-                </NavDropdown.Item>
-                <NavDropdown.Item href='#action4' onClick={handleShowRegister}>
-                  Register
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href='#action5'>
-                  Something else here
-                </NavDropdown.Item>
-              </DropdownType>
-            ))}
-            {/* <NavDropdown
-              title='Hi, ${currentUser}!'
-              id='navbarScrollingDropdown'
+                <Nav.Link href='/'>Home</Nav.Link>
+                <Nav.Link href='#action2'>Sell</Nav.Link>
+
+                <NavDropdown title='Buy' id='navbarScrollingDropdown'>
+                  <NavDropdown.Item href='#action3'>Cars</NavDropdown.Item>
+                  <NavDropdown.Item href='#action4'>Bikes</NavDropdown.Item>
+                  {/* <NavDropdown.Divider /> */}
+                  <NavDropdown.Item href='#action5'>Scooters</NavDropdown.Item>
+                  <NavDropdown.Item href='#action6'>
+                    Skateboards
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href='#action7'>
+                    Accessories
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Container>
+            <Container className='justify-content-end'>
+              <Form className='d-flex'>
+                <FormControl
+                  type='search'
+                  placeholder='Search'
+                  className='me-2'
+                  aria-label='Search'
+                />
+                <Button variant='outline-success'>Search</Button>
+                {[SplitButton].map((DropdownType, idx) => (
+                  <DropdownType
+                    as={ButtonGroup}
+                    key={idx}
+                    id={`dropdown-button-drop-${idx}`}
+                    // size='sm'
+                    variant='outline-success'
+                    title={currentUser}
+                    className='m-2 mt-0 mb-0'
+                  >
+                    <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
+                      Login
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      href='#action4'
+                      onClick={handleShowRegister}
+                    >
+                      Register
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href='#action5'>
+                      Something else here
+                    </NavDropdown.Item>
+                  </DropdownType>
+                ))}
+              </Form>
+            </Container>
+          </Navbar.Collapse>
+          {[SplitButton].map((DropdownType, idx) => (
+            <DropdownType
+              align='end'
+              as={ButtonGroup}
+              key={idx}
+              id={`dropdown-button-drop-${idx}`}
+              // size='sm'
+              variant='outline-success'
+              title={<Cart2 />}
+              className='m-2 mt-0 mb-0 dropdown-menu-right'
             >
-              <NavDropdown.Item href='#action3' onClick={handleShow}>
-                Login
+              <NavDropdown.Item
+                href='#action3'
+                onClick={handleShowLogin}
+                className=' dropdown-menu-right'
+              >
+                Cart Item #1
               </NavDropdown.Item>
               <NavDropdown.Item href='#action4' onClick={handleShowRegister}>
-                Register
+                Cart Item #2
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href='#action5'>
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown> */}
-            {/* <Button variant='outline-success'>
-              <Cart2 />
-            </Button> */}
-            {[SplitButton].map((DropdownType, idx) => (
-              <DropdownType
-                as={ButtonGroup}
-                key={idx}
-                id={`dropdown-button-drop-${idx}`}
-                // size='sm'
-                variant='outline-success'
-                title={<Cart2 />}
-                className='m-2 mt-0 mb-0'
-              >
-                <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
-                  Cart Item #1
-                </NavDropdown.Item>
-                <NavDropdown.Item href='#action4' onClick={handleShowRegister}>
-                  Cart Item #2
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href='#action5'>Checkout</NavDropdown.Item>
-              </DropdownType>
-            ))}
-          </Navbar.Collapse>
+              <NavDropdown.Item href='#action5'>Checkout</NavDropdown.Item>
+            </DropdownType>
+          ))}
         </Container>
       </Navbar>
 

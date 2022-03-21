@@ -1,3 +1,12 @@
+.App,
+.Header {
+  background-color: whitesmoke;
+}
+
+.Header {
+  background-color: whitesmoke;
+}
+
 #header-image {
   padding: 0;
   height: 250px;
@@ -8,4 +17,8 @@
 #header-image-div {
   height: 250px;
   overflow: hidden;
+}
+
+.submit-form {
+  max-width: 95%;
 }

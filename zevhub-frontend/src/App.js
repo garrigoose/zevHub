@@ -7,17 +7,18 @@ import CategoriesBar from './Components/CategoriesBar';
 import ResultsView from './Components/ResultsView';
 import ProductPage from './Product/ProductPage';
 import Footer from './Components/Footer';
+import UploadProductPage from './Product/UploadProduct';
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      <CategoriesBar />
       <div>
         <Routes>
           <Route path='/' element={<HomePage />}></Route>
           <Route path='/products' element={<ResultsView />}></Route>
           <Route path='/products/:id' element={<ProductPage />}></Route>
+          <Route path='/upload' element={<UploadProductPage />}></Route>
         </Routes>
       </div>
       <Footer />
