@@ -1,5 +1,6 @@
 import '../App.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Nav,
   Navbar,
@@ -20,12 +21,21 @@ const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [currentUser, setCurrentUser] = useState('User');
+  let navigate = useNavigate();
 
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
 
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
+
+  function navToCart() {
+    navigate('/cart');
+  }
+
+  function navToPost() {
+    navigate('/upload');
+  }
 
   return (
     <div className='Header'>
@@ -45,7 +55,9 @@ const Header = () => {
                 <Nav.Link href='/'>Home</Nav.Link>
 
                 <NavDropdown title='Sell' id='navbarScrollingDropdown'>
-                  <NavDropdown.Item href='#action3'>Post Item</NavDropdown.Item>
+                  <NavDropdown.Item href='#action3' onClick={navToPost}>
+                    Post Item
+                  </NavDropdown.Item>
                   <NavDropdown.Item href='#action4'>
                     Manage Items
                   </NavDropdown.Item>
@@ -111,6 +123,7 @@ const Header = () => {
               variant='outline-success'
               title={<Cart2 />}
               className='m-2 mt-0 mb-0 dropdown-menu-right'
+              onClick={navToCart}
             >
               <NavDropdown.Item
                 href='#action3'
