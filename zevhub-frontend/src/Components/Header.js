@@ -43,12 +43,17 @@ const Header = () => {
                 navbarScroll
               >
                 <Nav.Link href='/'>Home</Nav.Link>
-                <Nav.Link href='#action2'>Sell</Nav.Link>
 
-                <NavDropdown title='Buy' id='navbarScrollingDropdown'>
+                <NavDropdown title='Sell' id='navbarScrollingDropdown'>
+                  <NavDropdown.Item href='#action3'>Post Item</NavDropdown.Item>
+                  <NavDropdown.Item href='#action4'>
+                    Manage Items
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown title='Shop' id='navbarScrollingDropdown'>
+                  <NavDropdown.Item href='#action3'>All</NavDropdown.Item>
                   <NavDropdown.Item href='#action3'>Cars</NavDropdown.Item>
                   <NavDropdown.Item href='#action4'>Bikes</NavDropdown.Item>
-                  {/* <NavDropdown.Divider /> */}
                   <NavDropdown.Item href='#action5'>Scooters</NavDropdown.Item>
                   <NavDropdown.Item href='#action6'>
                     Skateboards
@@ -89,7 +94,7 @@ const Header = () => {
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href='#action5'>
-                      Something else here
+                      Manage Profile
                     </NavDropdown.Item>
                   </DropdownType>
                 ))}
