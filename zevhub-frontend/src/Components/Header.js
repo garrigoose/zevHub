@@ -76,7 +76,7 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
             </Container>
-            <Container className='justify-content-end'>
+            <Container className='d-flex justify-content-end'>
               <Form className='d-flex'>
                 <FormControl
                   type='search'
@@ -85,32 +85,32 @@ const Header = () => {
                   aria-label='Search'
                 />
                 <Button variant='outline-success'>Search</Button>
-                {[SplitButton].map((DropdownType, idx) => (
-                  <DropdownType
-                    as={ButtonGroup}
-                    key={idx}
-                    id={`dropdown-button-drop-${idx}`}
-                    // size='sm'
-                    variant='outline-success'
-                    title={currentUser}
-                    className='m-2 mt-0 mb-0'
-                  >
-                    <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
-                      Login
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href='#action4'
-                      onClick={handleShowRegister}
-                    >
-                      Register
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href='#action5'>
-                      Manage Profile
-                    </NavDropdown.Item>
-                  </DropdownType>
-                ))}
               </Form>
+              {[SplitButton].map((DropdownType, idx) => (
+                <DropdownType
+                  as={ButtonGroup}
+                  key={idx}
+                  id={`dropdown-button-drop-${idx}`}
+                  // size='sm'
+                  variant='outline-success'
+                  title={currentUser}
+                  className='m-2 mt-0 mb-0'
+                >
+                  <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
+                    Login
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href='#action4'
+                    onClick={handleShowRegister}
+                  >
+                    Register
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href='#action5'>
+                    Manage Profile
+                  </NavDropdown.Item>
+                </DropdownType>
+              ))}
             </Container>
           </Navbar.Collapse>
           {[SplitButton].map((DropdownType, idx) => (
