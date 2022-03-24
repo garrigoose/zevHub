@@ -14,6 +14,7 @@ import {
   ButtonGroup,
 } from 'react-bootstrap';
 import { Cart2 } from 'react-bootstrap-icons';
+import { FaUser, FaSignInAlt } from 'react-icons/fa';
 import LoginForm from '../User/LoginForm';
 import RegisterForm from '../User/RegisterForm';
 
@@ -76,7 +77,10 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
             </Container>
+
+            {/* right side of nav */}
             <Container className='d-flex justify-content-end'>
+              {/* search form */}
               <Form className='d-flex'>
                 <FormControl
                   type='search'
@@ -86,6 +90,8 @@ const Header = () => {
                 />
                 <Button variant='outline-success'>Search</Button>
               </Form>
+
+              {/* user dropdown */}
               {[SplitButton].map((DropdownType, idx) => (
                 <DropdownType
                   as={ButtonGroup}
@@ -94,19 +100,30 @@ const Header = () => {
                   // size='sm'
                   variant='outline-success'
                   title={currentUser}
-                  className='m-2 mt-0 mb-0'
+                  className='m-2 mt-0 mb-0 dropdown-menu-right'
                 >
-                  <NavDropdown.Item href='#action3' onClick={handleShowLogin}>
-                    Login
+                  {/* login, register, logout, view profile, manage profile */}
+                  <NavDropdown.Item
+                    href='#action3'
+                    onClick={handleShowLogin}
+                    className='dropdown-menu-right'
+                  >
+                    <FaSignInAlt />
+                    &nbsp;&nbsp;&nbsp;Login
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     href='#action4'
                     onClick={handleShowRegister}
+                    className='dropdown-menu-right'
                   >
-                    Register
+                    <FaUser />
+                    &nbsp;&nbsp;&nbsp;Register
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href='#action5'>
+                  <NavDropdown.Item
+                    href='#action5'
+                    className='dropdown-menu-right'
+                  >
                     Manage Profile
                   </NavDropdown.Item>
                 </DropdownType>
