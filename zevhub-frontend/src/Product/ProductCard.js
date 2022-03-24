@@ -7,24 +7,28 @@ const ProductCard = ({ product }) => {
   return (
     <div>
       <Card className='my-3 p-3 rounded'>
-        {/* <Link to={`/product/${product._id}`}> */}
-        <Card.Img variant='top' src='{product.image}' alt='product image' />
-        {/* </Link> */}
+        <Link to={`/product/${product._id}`}>
+          <Card.Img variant='top' src={product.image} alt='product image' />
+        </Link>
 
         <Card.Body>
-          {/* <Link to={`/product/${product._id}`}> */}
-          <Card.Title>Card title</Card.Title>
-          {/* </Link> */}
+          <Link to={`/product/${product._id}`}>
+            <Card.Title as='div'>
+              <strong>{product.name}</strong>
+            </Card.Title>
+          </Link>
 
-          <Card.Text>
+          <Card.Text as='div'>
             {/* <Rating
             value={product.rating}
             text={`${product.numReviews} reviews`}
           /> */}
-            <p>ratings and number of reviews</p>
+            <div className='my-3'>
+              {product.rating} from {product.numReviews}
+            </div>
           </Card.Text>
 
-          {/* <Card.Text as='h3'>${product.price}</Card.Text> */}
+          <Card.Text as='h3'>${product.price}</Card.Text>
         </Card.Body>
         {/* <Card.Footer>
           <small className='text-muted'>Last updated 3 mins ago</small>
