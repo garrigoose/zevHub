@@ -1,24 +1,34 @@
-import React from 'react';
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+// import Rating from './Rating';
+import products from '../products';
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
   return (
     <div>
-      <Card>
-        <Card.Img
-          variant='top'
-          src='https://electricbike.com/forum/filedata/fetch?photoid=127544'
-        />
+      <Card className='my-3 p-3 rounded'>
+        {/* <Link to={`/product/${product._id}`}> */}
+        <Card.Img variant='top' src='{product.image}' alt='product image' />
+        {/* </Link> */}
+
         <Card.Body>
+          {/* <Link to={`/product/${product._id}`}> */}
           <Card.Title>Card title</Card.Title>
+          {/* </Link> */}
+
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            {/* <Rating
+            value={product.rating}
+            text={`${product.numReviews} reviews`}
+          /> */}
+            <p>ratings and number of reviews</p>
           </Card.Text>
+
+          {/* <Card.Text as='h3'>${product.price}</Card.Text> */}
         </Card.Body>
-        <Card.Footer>
+        {/* <Card.Footer>
           <small className='text-muted'>Last updated 3 mins ago</small>
-        </Card.Footer>
+        </Card.Footer> */}
       </Card>
     </div>
   );

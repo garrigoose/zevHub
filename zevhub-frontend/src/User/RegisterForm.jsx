@@ -1,51 +1,76 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { FaUser } from 'react-icons/fa';
-import { loginUser } from '../actions/User_Actions';
 import { Form, Button } from 'react-bootstrap';
+import { register, reset } from '../features/auth/authSlice';
+import Spinner from '../Components/Spinner';
 
 const RegisterForm = (props) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: '',
-  });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState(null);
 
-  const { name, email, password, password2 } = formData;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const { user, isLoading, isError, isSuccess } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      navigate('/');
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+
+      dispatch(register(userData));
+    }
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
       <Form onSubmit={onSubmit}>
         <Form.Group className='mb-3'>
-          <Form.Group className='mb-3'>
-            <Form.Control
-              id='name'
-              placeholder='Enter your name'
-              type='name'
-              value={name}
-              onChange={onChange}
-            ></Form.Control>
-          </Form.Group>
+          <Form.Control
+            id='name'
+            placeholder='Enter your name'
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3'>
           <Form.Control
             id='email'
             placeholder='Enter your email'
-            type='email'
+            type='text'
             value={email}
-            onChange={onChange}
+            onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group className='mb-3'>
@@ -54,16 +79,16 @@ const RegisterForm = (props) => {
             placeholder='Enter your password'
             type='password'
             value={password}
-            onChange={onChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Control
-            id='password2'
+            id='confirmPassword'
             placeholder='Confirm password'
             type='password'
-            value={password2}
-            onChange={onChange}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form.Group>
         {/* <Form.Group className='mb-3' controlId='formBasicCheckbox'>

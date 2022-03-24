@@ -9,7 +9,7 @@ import { Container } from 'react-bootstrap';
 const HomePage = () => {
   return (
     <div>
-      <CategoriesBar />
+      <CategoriesBar className='d-sm-none d-md-none d-lg-block' />
       <div id='header-image-div'>
         <Image src={headerImage} id='header-image'></Image>
       </div>

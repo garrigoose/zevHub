@@ -20,12 +20,6 @@ const Footer = () => (
             <li>
               <a href='#!'>Link 2</a>
             </li>
-            {/* <li>
-              <a href='#!'>Link 3</a>
-            </li>
-            <li>
-              <a href='#!'>Link 4</a>
-            </li> */}
           </ul>
         </div>
 
@@ -38,12 +32,6 @@ const Footer = () => (
             <li>
               <a href='#!'>Link 2</a>
             </li>
-            {/* <li>
-              <a href='#!'>Link 3</a>
-            </li>
-            <li>
-              <a href='#!'>Link 4</a>
-            </li> */}
           </ul>
         </div>
       </div>

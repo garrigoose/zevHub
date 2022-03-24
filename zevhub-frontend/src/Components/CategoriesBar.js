@@ -4,7 +4,11 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 const CategoriesBar = () => {
   return (
     <div>
-      <Navbar bg='light' variant='light'>
+      <Navbar
+        bg='light'
+        variant='light'
+        className='d-none d-sm-none d-md-none d-lg-block'
+      >
         <Container>
           <Navbar.Brand href='#home'>
             The Electric Mobility Marketplace

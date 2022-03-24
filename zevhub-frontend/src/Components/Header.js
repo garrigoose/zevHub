@@ -14,7 +14,7 @@ import {
   ButtonGroup,
 } from 'react-bootstrap';
 import { Cart2 } from 'react-bootstrap-icons';
-import { FaUser, FaSignInAlt } from 'react-icons/fa';
+import { FaUser, FaSignInAlt, FaSearch } from 'react-icons/fa';
 import LoginForm from '../User/LoginForm';
 import RegisterForm from '../User/RegisterForm';
 
@@ -55,6 +55,7 @@ const Header = () => {
               >
                 <Nav.Link href='/'>Home</Nav.Link>
 
+                {/* sell dropdown */}
                 <NavDropdown title='Sell' id='navbarScrollingDropdown'>
                   <NavDropdown.Item href='#action3' onClick={navToPost}>
                     Post Item
@@ -63,6 +64,8 @@ const Header = () => {
                     Manage Items
                   </NavDropdown.Item>
                 </NavDropdown>
+
+                {/* shop dropdown */}
                 <NavDropdown title='Shop' id='navbarScrollingDropdown'>
                   <NavDropdown.Item href='#action3'>All</NavDropdown.Item>
                   <NavDropdown.Item href='#action3'>Cars</NavDropdown.Item>
@@ -85,10 +88,13 @@ const Header = () => {
                 <FormControl
                   type='search'
                   placeholder='Search'
-                  className='me-2'
+                  className='me-2 no-border'
+                  // ng-class="{'no-border': toggle}"
                   aria-label='Search'
                 />
-                <Button variant='outline-success'>Search</Button>
+                <Button variant='btn-primary-outline'>
+                  <FaSearch />
+                </Button>
               </Form>
 
               {/* user dropdown */}
@@ -98,7 +104,7 @@ const Header = () => {
                   key={idx}
                   id={`dropdown-button-drop-${idx}`}
                   // size='sm'
-                  variant='outline-success'
+                  variant='btn-primary-outline'
                   title={currentUser}
                   className='m-2 mt-0 mb-0 dropdown-menu-right'
                 >
@@ -137,7 +143,7 @@ const Header = () => {
               key={idx}
               id={`dropdown-button-drop-${idx}`}
               // size='sm'
-              variant='outline-success'
+              variant='btn-primary-outline'
               title={<Cart2 />}
               className='m-2 mt-0 mb-0 dropdown-menu-right'
               onClick={navToCart}

@@ -1,5 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header';
 import HomePage from './Components/HomePage';
@@ -21,6 +23,7 @@ function App() {
           <Route path='/upload' element={<UploadProductPage />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
         </Routes>
+        <ToastContainer />
       </div>
       <Footer />
     </div>
