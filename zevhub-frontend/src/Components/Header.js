@@ -1,6 +1,7 @@
 import '../App.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import {
   Nav,
   Navbar,
@@ -42,9 +43,11 @@ const Header = () => {
     <div className='Header'>
       <Navbar sticky='top' bg='light' expand='lg' className='sticky-top '>
         <Container fluid sticky='top'>
-          <Navbar.Brand sticky='top' href='#'>
-            Z E V H U B
-          </Navbar.Brand>
+          <LinkContainer to='/'>
+            <Navbar.Brand sticky='top' href='#'>
+              Z E V H U B
+            </Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls='navbarScroll' />
           <Navbar.Collapse id='navbarScroll'>
             <Container>
@@ -53,13 +56,17 @@ const Header = () => {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <Nav.Link href='/'>Home</Nav.Link>
+                <LinkContainer to='/'>
+                  <Nav.Link>Home</Nav.Link>
+                </LinkContainer>
 
                 {/* sell dropdown */}
                 <NavDropdown title='Sell' id='navbarScrollingDropdown'>
-                  <NavDropdown.Item href='#action3' onClick={navToPost}>
-                    Post Item
-                  </NavDropdown.Item>
+                  <LinkContainer to='/sell'>
+                    <NavDropdown.Item href='#action3' onClick={navToPost}>
+                      Post Item
+                    </NavDropdown.Item>
+                  </LinkContainer>
                   <NavDropdown.Item href='#action4'>
                     Manage Items
                   </NavDropdown.Item>

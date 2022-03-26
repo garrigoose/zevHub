@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />}></Route>
           <Route path='/products' element={<ResultsView />}></Route>
-          <Route path='/products/:id' element={<ProductPage />}></Route>
+          <Route path='/products/:productId' element={<ProductPage />}></Route>
           <Route path='/upload' element={<UploadProductPage />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
         </Routes>

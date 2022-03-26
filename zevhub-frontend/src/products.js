@@ -11,6 +11,7 @@ const products = [
     countInStock: 3,
     rating: 0,
     numReviews: 0,
+    _id: 0,
   },
   {
     name: 'Scooter',
@@ -24,6 +25,7 @@ const products = [
     countInStock: 10,
     rating: 0,
     numReviews: 0,
+    _id: 1,
   },
   {
     name: 'Skateboard',
@@ -36,6 +38,7 @@ const products = [
     countInStock: 0,
     rating: 0,
     numReviews: 0,
+    _id: 2,
   },
   {
     name: 'Jet Ski',
@@ -49,6 +52,7 @@ const products = [
     countInStock: 10,
     rating: 0,
     numReviews: 0,
+    _id: 3,
   },
   {
     name: 'Tesla',
@@ -62,6 +66,7 @@ const products = [
     countInStock: 7,
     rating: 2.5,
     numReviews: 4,
+    _id: 4,
   },
   {
     name: 'Motorcycle',
@@ -75,6 +80,7 @@ const products = [
     countInStock: 0,
     rating: 4.5,
     numReviews: 3,
+    _id: 5,
   },
 ];
 
