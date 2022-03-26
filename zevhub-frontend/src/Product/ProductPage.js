@@ -12,11 +12,20 @@ import {
 } from 'react-bootstrap';
 import Rating from './Rating';
 import products from '../products';
+import axios from 'axios';
 
 function ProductPage() {
   const { productId } = useParams();
-  const product = products[productId];
-  console.log(product);
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get(`/products/${productId}`);
+      console.log(data);
+      setProduct(data);
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <Container>

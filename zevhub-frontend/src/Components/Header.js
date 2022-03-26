@@ -96,7 +96,6 @@ const Header = () => {
                   type='search'
                   placeholder='Search'
                   className='me-2 border-0'
-                  // ng-class="{'no-border': toggle}"
                   aria-label='Search'
                 />
                 <Button variant='btn-primary-outline'>
