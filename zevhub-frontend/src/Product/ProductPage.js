@@ -11,7 +11,6 @@ import {
   Container,
 } from 'react-bootstrap';
 import Rating from './Rating';
-import products from '../products';
 import axios from 'axios';
 
 function ProductPage() {
@@ -21,7 +20,6 @@ function ProductPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       const { data } = await axios.get(`/products/${productId}`);
-      console.log(data);
       setProduct(data);
     };
     fetchProducts();
