@@ -1,24 +1,25 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Card, CardGroup, Col, Row, Container } from 'react-bootstrap';
 import ProductCard from '../Product/ProductCard';
-// import products from '../products';
+import { listProducts } from '../actions/productActions';
 
 const HomePageCards = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get('/products');
-      console.log(data);
-      setProducts(data);
-    };
-    fetchProducts();
-  }, []);
+    dispatch(listProducts());
+  }, [dispatch]);
+
+  // const products = [];
 
   return (
     <div className='pt-5'>
       <Container>
+        <h1>Latest Products</h1>
         <CardGroup className='gap-4'>
           <Row xs={1} sm={2} md={4} className='g-4'>
             {products.map((product) => (

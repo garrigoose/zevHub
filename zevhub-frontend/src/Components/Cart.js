@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  getCartItems,
-  removeCartItem,
-  onSuccessBuy,
-} from '../actions/User_Actions.js';
 import UserCard from '../Cart/UserCard';
 import { Result, Empty } from 'antd';
 import Axios from 'axios';
