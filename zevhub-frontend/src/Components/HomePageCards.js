@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Card, CardGroup, Col, Row, Container } from 'react-bootstrap';
+import Message from './Message';
+import Loader from './Loader';
 import ProductCard from '../Product/ProductCard';
 import { listProducts } from '../actions/productActions';
 
@@ -21,13 +23,21 @@ const HomePageCards = () => {
       <Container>
         <h1>Latest Products</h1>
         <CardGroup className='gap-4'>
-          <Row xs={1} sm={2} md={4} className='g-4'>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <ProductCard product={product} />
-              </Col>
-            ))}
-          </Row>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant='danger'>{error}</Message>
+          ) : (
+            <>
+              <Row>
+                {products.map((product) => (
+                  <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                    <ProductCard product={product} />
+                  </Col>
+                ))}
+              </Row>
+            </>
+          )}
         </CardGroup>
       </Container>
     </div>
