@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import Rating from './Rating';
 
 const ProductCard = ({ product }) => {
+  const productId = product._id;
+  console.log(productId);
+
   return (
     <Card className='my-3 p-3 rounded border-0'>
-      <Link to={`/products/${product._id}`}>
+      <Link to={`/products/${productId}`}>
         <Card.Img
           variant='top'
           src={product.image}
@@ -18,7 +21,7 @@ const ProductCard = ({ product }) => {
       <Card.Body>
         <Link to={`/products/${product._id}`}>
           <Card.Title as='div'>
-            <strong>{product.name}</strong>
+            <strong>{product.title}</strong>
           </Card.Title>
         </Link>
 
