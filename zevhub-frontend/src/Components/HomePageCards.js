@@ -1,9 +1,21 @@
-import React from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { Card, CardGroup, Col, Row, Container } from 'react-bootstrap';
 import ProductCard from '../Product/ProductCard';
-import products from '../products';
+// import products from '../products';
 
 const HomePageCards = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get('/products');
+      console.log(data);
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div className='pt-5'>
       <Container>

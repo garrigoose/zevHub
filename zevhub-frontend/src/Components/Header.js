@@ -95,7 +95,7 @@ const Header = () => {
                 <FormControl
                   type='search'
                   placeholder='Search'
-                  className='me-2 no-border'
+                  className='me-2 border-0'
                   // ng-class="{'no-border': toggle}"
                   aria-label='Search'
                 />

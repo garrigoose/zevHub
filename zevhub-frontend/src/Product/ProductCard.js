@@ -2,11 +2,10 @@ import '../App.css';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
-import products from '../products';
 
 const ProductCard = ({ product }) => {
   return (
-    <Card className='my-3 p-3 rounded'>
+    <Card className='my-3 p-3 rounded border-0'>
       <Link to={`/products/${product._id}`}>
         <Card.Img
           variant='top'
