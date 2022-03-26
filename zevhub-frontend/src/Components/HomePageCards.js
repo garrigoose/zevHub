@@ -10,7 +10,7 @@ const HomePageCards = () => {
         <CardGroup className='gap-4'>
           <Row xs={1} sm={2} md={4} className='g-4'>
             {products.map((product) => (
-              <Col sm={12} md={6} lg={4} xl={3}>
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                 <ProductCard product={product} />
               </Col>
             ))}
