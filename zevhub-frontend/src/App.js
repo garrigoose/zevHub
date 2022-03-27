@@ -9,7 +9,7 @@ import ResultsView from './Components/ResultsView';
 import ProductPage from './Product/ProductPage';
 import Footer from './Components/Footer';
 import UploadProductPage from './Product/UploadProduct';
-import Cart from './Components/Cart';
+import Cart from './Cart/Cart';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path='/products' element={<ResultsView />}></Route>
           <Route path='/products/:productId' element={<ProductPage />}></Route>
           <Route path='/upload' element={<UploadProductPage />}></Route>
-          <Route path='/cart' element={<Cart />}></Route>
+          <Route path='/cart/:id?' element={<Cart />}></Route>
         </Routes>
         <ToastContainer />
       </div>

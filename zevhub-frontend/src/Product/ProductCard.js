@@ -5,7 +5,6 @@ import Rating from './Rating';
 
 const ProductCard = ({ product }) => {
   const productId = product._id;
-  console.log(productId);
 
   return (
     <Card className='my-3 p-3 rounded border-0'>

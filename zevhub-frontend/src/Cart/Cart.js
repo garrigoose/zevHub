@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import UserCard from '../Cart/UserCard';
+import UserCard from './UserCard';
 import { Result, Empty } from 'antd';
 import Axios from 'axios';
-import PayPal from './utilities/PayPal';
+// import PayPal from '../Components/utilities/PayPal';
 
 function Cart(props) {
   // const dispatch = useDispatch();
@@ -105,7 +105,7 @@ function Cart(props) {
 
       {/* Paypal Button */}
 
-      <PayPal />
+      {/* <PayPal />
       {ShowTotal && (
         <PayPal
           toPay={Total}
@@ -113,7 +113,7 @@ function Cart(props) {
           transactionError={transactionError}
           transactionCanceled={transactionCanceled}
         />
-      )}
+      )} */}
     </div>
   );
 }
