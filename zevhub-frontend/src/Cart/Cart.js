@@ -1,119 +1,131 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import UserCard from './UserCard';
-import { Result, Empty } from 'antd';
-import Axios from 'axios';
-// import PayPal from '../Components/utilities/PayPal';
+import { useEffect } from 'react';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Row,
+  Col,
+  ListGroup,
+  Image,
+  Form,
+  Button,
+  Card,
+  ListGroupItem,
+} from 'react-bootstrap';
+import Message from '../Components/Message';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 
-function Cart(props) {
-  // const dispatch = useDispatch();
-  const [Total, setTotal] = useState(0);
-  const [ShowTotal, setShowTotal] = useState(false);
-  const [ShowSuccess, setShowSuccess] = useState(false);
+function Cart() {
+  const { productId } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const qty = new URLSearchParams(location.search).get('qty');
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   let cartItems = [];
-  //   if (props.user.userData && props.user.userData.cart) {
-  //     if (props.user.userData.cart.length > 0) {
-  //       props.user.userData.cart.forEach((item) => {
-  //         cartItems.push(item.id);
-  //       });
-  //       dispatch(getCartItems(cartItems, props.user.userData.cart)).then(
-  //         (response) => {
-  //           if (response.payload.length > 0) {
-  //             calculateTotal(response.payload);
-  //           }
-  //         }
-  //       );
-  //     }
-  //   }
-  // }, [props.user.userData]);
+  useEffect(() => {
+    if (productId) {
+      dispatch(addToCart(productId, qty));
+    }
+  }, [dispatch, productId, qty]);
 
-  const calculateTotal = (cartDetail) => {
-    let total = 0;
-
-    cartDetail.map((item) => {
-      total += parseInt(item.price, 10) * item.quantity;
-    });
-
-    setTotal(total);
-    setShowTotal(true);
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
   };
 
-  // const removeFromCart = (productId) => {
-  //   dispatch(removeCartItem(productId)).then((response) => {
-  //     if (response.payload.cartDetail.length <= 0) {
-  //       setShowTotal(false);
-  //     } else {
-  //       calculateTotal(response.payload.cartDetail);
-  //     }
-  //   });
-  // };
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  console.log(cartItems);
 
-  // const transactionSuccess = (data) => {
-  //   dispatch(
-  //     onSuccessBuy({
-  //       cartDetail: props.user.cartDetail,
-  //       paymentData: data,
-  //     })
-  //   ).then((response) => {
-  //     if (response.payload.success) {
-  //       setShowSuccess(true);
-  //       setShowTotal(false);
-  //     }
-  //   });
-  // };
-
-  const transactionError = () => {
-    console.log('Paypal error');
+  const checkoutHandler = () => {
+    navigate('/login?redirect=shipping');
   };
-
-  const transactionCanceled = () => {
-    console.log('Transaction canceled');
-  };
+  // const state = useSelector((state) => state);
+  // console.log(state);
 
   return (
-    <div style={{ width: '85%', margin: '3rem auto' }}>
-      <h1>My Cart</h1>
-      <div>
-        <UserCard
-        // products={props.user.cartDetail}
-        // removeItem={removeFromCart}
-        />
-
-        {ShowTotal ? (
-          <div style={{ marginTop: '3rem' }}>
-            <h2>Total amount: ${Total} </h2>
-          </div>
-        ) : ShowSuccess ? (
-          <Result status='success' title='Successfully Purchased Items' />
-        ) : (
-          <div
-            style={{
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-            }}
-          >
-            <br />
-            <Empty description={false} />
-            <p>No Items In the Cart</p>
-          </div>
-        )}
-      </div>
-
-      {/* Paypal Button */}
-
-      {/* <PayPal />
-      {ShowTotal && (
-        <PayPal
-          toPay={Total}
-          // onSuccess={transactionSuccess}
-          transactionError={transactionError}
-          transactionCanceled={transactionCanceled}
-        />
-      )} */}
+    <div>
+      <Row>
+        <Col md={8}>
+          <h1>Shopping Cart</h1>
+          {cartItems.length === 0 ? (
+            <Message>
+              Your cart is empty<Link to='/'>Go Back</Link>
+            </Message>
+          ) : (
+            <ListGroup variant='flush'>
+              {cartItems.map((item) => (
+                <ListGroupItem key={item.product}>
+                  <Row>
+                    <Col md={2}>
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fluid
+                        rounded
+                      ></Image>
+                    </Col>
+                    <Col md={3}>
+                      <Link to={`/product/${item.product}`}>{item.title}</Link>
+                    </Col>
+                    <Col md={2}>${item.price}</Col>
+                    <Col md={2}>
+                      <Form.Control
+                        as='select'
+                        value={item.qty}
+                        onChange={(e) =>
+                          dispatch(
+                            addToCart(item.product, Number(e.target.value))
+                          )
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                    <Col md={2}>
+                      <Button
+                        type='button'
+                        variant='light'
+                        onClick={() => removeFromCartHandler(item.product)}
+                      >
+                        <i className='fas fa-trash'></i>
+                      </Button>
+                    </Col>
+                  </Row>
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          )}
+        </Col>
+        <Col md={4}>
+          <Card className='border-0'>
+            <ListGroup variant='flush'>
+              <ListGroup.Item>
+                <h2>
+                  Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                  ) items
+                </h2>
+                $
+                {cartItems
+                  .reduce((acc, item) => acc + item.qty * item.price, 0)
+                  .toFixed(2)}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type='button'
+                  className='btn-block'
+                  disabled={cartItems.length === 0}
+                  onClick={checkoutHandler}
+                >
+                  Proceed To Checkout
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 }

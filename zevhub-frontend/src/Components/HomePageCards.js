@@ -16,8 +16,6 @@ const HomePageCards = () => {
     dispatch(listProducts());
   }, [dispatch]);
 
-  // const products = [];
-
   return (
     <div className='pt-5'>
       <Container>

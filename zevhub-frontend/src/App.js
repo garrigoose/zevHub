@@ -1,4 +1,6 @@
 import './App.css';
+import './bootstrap.min.css';
+import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,20 +15,26 @@ import Cart from './Cart/Cart';
 
 function App() {
   return (
-    <div className='App'>
+    <>
       <Header />
-      <div>
-        <Routes>
-          <Route path='/' element={<HomePage />}></Route>
-          <Route path='/products' element={<ResultsView />}></Route>
-          <Route path='/products/:productId' element={<ProductPage />}></Route>
-          <Route path='/upload' element={<UploadProductPage />}></Route>
-          <Route path='/cart/:id?' element={<Cart />}></Route>
-        </Routes>
-        <ToastContainer />
-      </div>
+      <main className='App'>
+        <Container>
+          <Routes>
+            <Route path='/' element={<HomePage />}></Route>
+            <Route path='/products' element={<ResultsView />}></Route>
+            <Route
+              path='/products/:productId'
+              element={<ProductPage />}
+            ></Route>
+            <Route path='/upload' element={<UploadProductPage />}></Route>
+            <Route path='/cart/' element={<Cart />}></Route>
+            <Route path='/cart/:productId' element={<Cart />}></Route>
+          </Routes>
+          <ToastContainer />
+        </Container>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
