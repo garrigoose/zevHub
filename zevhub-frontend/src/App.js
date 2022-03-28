@@ -13,7 +13,9 @@ import Footer from './Components/Footer';
 import UploadProductPage from './Product/UploadProduct';
 import Cart from './Cart/Cart';
 import ProfilePage from './User/ProfilePage';
-import Shipping from './Components/Shipping';
+import Shipping from './Cart/Shipping';
+import PaymentScreen from './Cart/Payment';
+import PlaceOrder from './Cart/PlaceOrder';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
             ></Route>
             <Route path='/upload' element={<UploadProductPage />}></Route>
             <Route path='/shipping/' element={<Shipping />}></Route>
+            <Route path='/payment/' element={<PaymentScreen />}></Route>
+            <Route path='/placeorder/' element={<PlaceOrder />}></Route>
             <Route path='/cart/' element={<Cart />}></Route>
             <Route path='/cart/:productId' element={<Cart />}></Route>
           </Routes>
