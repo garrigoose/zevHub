@@ -31,11 +31,12 @@ const LoginForm = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    props.handleCloseLogin();
   };
 
   return (
     <>
-      <h1>Sign In</h1>
+      {/* <h1>Sign In</h1> */}
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
 
@@ -60,11 +61,7 @@ const LoginForm = (props) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button
-          type='submit'
-          variant='primary'
-          onClick={props.handleCloseLogin}
-        >
+        <Button type='submit' variant='primary'>
           Sign In
         </Button>
       </Form>

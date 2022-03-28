@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { Form, Button } from 'react-bootstrap';
-import { register, reset } from '../features/auth/authSlice';
-import Spinner from '../Components/Spinner';
+import Message from '../Components/Message';
+import Loader from '../Components/Loader';
+import FormContainer from '../Components/FormContainer';
+import { register } from '../actions/userActions';
 
-const RegisterForm = (props) => {
+const RegsiterForm = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,105 +16,83 @@ const RegisterForm = (props) => {
   const [message, setMessage] = useState(null);
 
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess } = useSelector(
-    (state) => state.auth
-  );
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
+
+  // const redirect = location.search ? location.search.split('=')[1] : '/';
 
   useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-
-    if (isSuccess || user) {
+    if (userInfo) {
       navigate('/');
     }
+  }, [navigate, userInfo]);
 
-    dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
-
-  const onSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
+      setMessage('Passwords do not match');
     } else {
-      const userData = {
-        name,
-        email,
-        password,
-      };
-
-      dispatch(register(userData));
+      dispatch(register(name, email, password));
+      props.handleCloseRegister();
     }
   };
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   return (
     <>
-      <Form onSubmit={onSubmit}>
-        <Form.Group className='mb-3'>
+      {/* <h1>Sign Up</h1> */}
+      {message && <Message variant='danger'>{message}</Message>}
+      {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />}
+      <Form onSubmit={submitHandler}>
+        <Form.Group controlId='name'>
+          <Form.Label>Name</Form.Label>
           <Form.Control
-            id='name'
-            placeholder='Enter your name'
-            type='text'
+            type='name'
+            placeholder='Enter name'
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group className='mb-3'>
+
+        <Form.Group controlId='email'>
+          <Form.Label>Email Address</Form.Label>
           <Form.Control
-            id='email'
-            placeholder='Enter your email'
-            type='text'
+            type='email'
+            placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group className='mb-3'>
+
+        <Form.Group controlId='password'>
+          <Form.Label>Password</Form.Label>
           <Form.Control
-            id='password'
-            placeholder='Enter your password'
             type='password'
+            placeholder='Enter password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
+          ></Form.Control>
         </Form.Group>
-        <Form.Group className='mb-3'>
+
+        <Form.Group controlId='confirmPassword'>
+          <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            id='confirmPassword'
-            placeholder='Confirm password'
             type='password'
+            placeholder='Confirm password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+          ></Form.Control>
         </Form.Group>
-        {/* <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-                    <Form.Check
-                      type='checkbox'
-                      id='rememberMe'
-                      onChange={handleRememberMe}
-                      checked={rememberMe}
-                      label='Remember Me'
-                    ></Form.Check>
-                  </Form.Group> */}
-        <div>
-          <Button
-            type='submit'
-            variant='outline-success'
-            className='login-form-button'
-            style={{ minWidth: '100%' }}
-          >
-            Register
-          </Button>
-        </div>
+
+        <Button type='submit' variant='primary'>
+          Register
+        </Button>
       </Form>
     </>
   );
 };
 
-export default RegisterForm;
+export default RegsiterForm;
