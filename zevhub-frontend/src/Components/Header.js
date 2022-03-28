@@ -19,17 +19,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaUser, FaSignInAlt, FaSearch } from 'react-icons/fa';
 import LoginForm from '../User/LoginForm';
 import RegisterForm from '../User/RegisterForm';
+import { logout } from '../actions/userActions';
 
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   // const [currentUser, setCurrentUser] = useState('User');
-  let navigate = useNavigate();
-  let currentUser = 'Welcome!';
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const state = useSelector((state) => state);
-  // console.log(userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
@@ -45,7 +49,7 @@ const Header = () => {
     navigate('/upload');
   }
 
-  // currentUser = userLogin.userInfo.name;
+  // userInfo.name = userLogin.userInfo.name;
   // useEffect(() => {
   //   if (userLogin.userInfo.name) {
   //   }
@@ -122,44 +126,49 @@ const Header = () => {
               </Form>
 
               {/* user dropdown */}
-              {[SplitButton].map((DropdownType, idx) => (
-                <DropdownType
+              {userInfo ? (
+                <NavDropdown
+                  title={userInfo.name}
+                  id='username'
                   bg='dark'
                   variant='dark'
-                  as={ButtonGroup}
-                  key={idx}
-                  id={`dropdown-button-drop-${idx}`}
-                  // size='sm'
-                  // variant='btn-primary-outline'
-                  title={currentUser}
-                  className='m-2 mt-0 mb-0 dropdown-menu-right'
                 >
-                  {/* login, register, logout, view profile, manage profile */}
+                  <LinkContainer to='/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <NavDropdown
+                  title={'Welcome!'}
+                  id='username'
+                  bg='dark'
+                  variant='dark'
+                >
                   <NavDropdown.Item
                     href='#action3'
                     onClick={handleShowLogin}
                     className='dropdown-menu-right'
+                    bg='dark'
+                    variant='dark'
                   >
                     <FaSignInAlt />
-                    &nbsp;&nbsp;&nbsp;Login
+                    &nbsp;Login
                   </NavDropdown.Item>
                   <NavDropdown.Item
-                    href='#action4'
+                    href='#action3'
                     onClick={handleShowRegister}
                     className='dropdown-menu-right'
+                    bg='dark'
+                    variant='dark'
                   >
-                    <FaUser />
-                    &nbsp;&nbsp;&nbsp;Register
+                    <FaSignInAlt />
+                    &nbsp;Register
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item
-                    href='#action5'
-                    className='dropdown-menu-right'
-                  >
-                    Manage Profile
-                  </NavDropdown.Item>
-                </DropdownType>
-              ))}
+                </NavDropdown>
+              )}
             </Container>
           </Navbar.Collapse>
           {[SplitButton].map((DropdownType, idx) => (
@@ -181,9 +190,7 @@ const Header = () => {
               >
                 Cart Item #1
               </NavDropdown.Item>
-              <NavDropdown.Item href='#action4' onClick={handleShowRegister}>
-                Cart Item #2
-              </NavDropdown.Item>
+              <NavDropdown.Item href='#action4'>Cart Item #2</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href='#action5'>Checkout</NavDropdown.Item>
             </DropdownType>
