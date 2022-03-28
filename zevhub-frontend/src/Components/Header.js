@@ -1,5 +1,5 @@
 import '../App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
@@ -15,6 +15,7 @@ import {
   ButtonGroup,
 } from 'react-bootstrap';
 import { Cart2 } from 'react-bootstrap-icons';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaUser, FaSignInAlt, FaSearch } from 'react-icons/fa';
 import LoginForm from '../User/LoginForm';
 import RegisterForm from '../User/RegisterForm';
@@ -22,8 +23,13 @@ import RegisterForm from '../User/RegisterForm';
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [currentUser, setCurrentUser] = useState('User');
+  // const [currentUser, setCurrentUser] = useState('User');
   let navigate = useNavigate();
+  let currentUser = 'Welcome!';
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const state = useSelector((state) => state);
+  // console.log(userLogin);
 
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
@@ -38,6 +44,12 @@ const Header = () => {
   function navToPost() {
     navigate('/upload');
   }
+
+  // currentUser = userLogin.userInfo.name;
+  // useEffect(() => {
+  //   if (userLogin.userInfo.name) {
+  //   }
+  // }, [userLogin]);
 
   return (
     <div className='Header'>
@@ -185,7 +197,7 @@ const Header = () => {
           <Modal.Title>Please Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <LoginForm />
+          <LoginForm handleCloseLogin={handleCloseLogin} />
           {/* <TestForm /> */}
         </Modal.Body>
         <Modal.Footer>
@@ -204,16 +216,8 @@ const Header = () => {
           <Modal.Title>Please Register</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <RegisterForm />
+          <RegisterForm handleCloseRegister={handleCloseRegister} />
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant='outline-success' onClick={handleCloseRegister}>
-            Close
-          </Button>
-          <Button variant='outline-success' onClick={handleCloseRegister}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );
