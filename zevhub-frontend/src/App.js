@@ -12,6 +12,7 @@ import ProductPage from './Product/ProductPage';
 import Footer from './Components/Footer';
 import UploadProductPage from './Product/UploadProduct';
 import Cart from './Cart/Cart';
+import ProfilePage from './User/ProfilePage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Container>
           <Routes>
             <Route path='/' element={<HomePage />}></Route>
+            <Route path='/profile' element={<ProfilePage />}></Route>
             <Route path='/products' element={<ResultsView />}></Route>
             <Route
               path='/products/:productId'
