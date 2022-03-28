@@ -27,6 +27,8 @@ const ProfilePage = () => {
   const { userInfo } = userLogin;
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const state = useSelector((state) => state);
+  console.log(state);
   const { success } = userUpdateProfile;
 
   //   const orderListMy = useSelector((state) => state.orderListMy);

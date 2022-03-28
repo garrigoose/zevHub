@@ -13,6 +13,7 @@ import Footer from './Components/Footer';
 import UploadProductPage from './Product/UploadProduct';
 import Cart from './Cart/Cart';
 import ProfilePage from './User/ProfilePage';
+import Shipping from './Components/Shipping';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               element={<ProductPage />}
             ></Route>
             <Route path='/upload' element={<UploadProductPage />}></Route>
+            <Route path='/shipping/' element={<Shipping />}></Route>
             <Route path='/cart/' element={<Cart />}></Route>
             <Route path='/cart/:productId' element={<Cart />}></Route>
           </Routes>
