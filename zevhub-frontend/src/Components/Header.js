@@ -41,7 +41,13 @@ const Header = () => {
 
   return (
     <div className='Header'>
-      <Navbar sticky='top' bg='light' expand='lg' className='sticky-top '>
+      <Navbar
+        sticky='top'
+        bg='dark'
+        variant='dark'
+        expand='lg'
+        className='sticky-top '
+      >
         <Container fluid sticky='top'>
           <LinkContainer to='/'>
             <Navbar.Brand sticky='top' href='#'>
@@ -98,7 +104,7 @@ const Header = () => {
                   className='me-2 border-0'
                   aria-label='Search'
                 />
-                <Button variant='btn-primary-outline'>
+                <Button bg='dark' variant='dark'>
                   <FaSearch />
                 </Button>
               </Form>
@@ -106,11 +112,13 @@ const Header = () => {
               {/* user dropdown */}
               {[SplitButton].map((DropdownType, idx) => (
                 <DropdownType
+                  bg='dark'
+                  variant='dark'
                   as={ButtonGroup}
                   key={idx}
                   id={`dropdown-button-drop-${idx}`}
                   // size='sm'
-                  variant='btn-primary-outline'
+                  // variant='btn-primary-outline'
                   title={currentUser}
                   className='m-2 mt-0 mb-0 dropdown-menu-right'
                 >
@@ -144,12 +152,12 @@ const Header = () => {
           </Navbar.Collapse>
           {[SplitButton].map((DropdownType, idx) => (
             <DropdownType
+              bg='dark'
+              variant='dark'
               align='end'
               as={ButtonGroup}
               key={idx}
               id={`dropdown-button-drop-${idx}`}
-              // size='sm'
-              variant='btn-primary-outline'
               title={<Cart2 />}
               className='m-2 mt-0 mb-0 dropdown-menu-right'
               onClick={navToCart}
