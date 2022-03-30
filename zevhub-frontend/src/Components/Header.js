@@ -30,6 +30,7 @@ const Header = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  console.log(userInfo);
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -109,7 +110,6 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
             </Container>
-
             {/* right side of nav */}
             <Container className='d-flex justify-content-end'>
               {/* search form */}
@@ -170,7 +170,21 @@ const Header = () => {
                 </NavDropdown>
               )}
             </Container>
+            {userInfo && userInfo.isAdmin && (
+              <NavDropdown title='Admin' id='adminmenu'>
+                <LinkContainer to='/admin/userlist'>
+                  <NavDropdown.Item>Users</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/productlist'>
+                  <NavDropdown.Item>Products</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/orderlist'>
+                  <NavDropdown.Item>Orders</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+            )}
           </Navbar.Collapse>
+          {/* cart navigation */}
           {[SplitButton].map((DropdownType, idx) => (
             <DropdownType
               bg='dark'

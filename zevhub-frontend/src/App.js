@@ -17,6 +17,7 @@ import Shipping from './Cart/Shipping';
 import PaymentScreen from './Cart/Payment';
 import PlaceOrder from './Cart/PlaceOrder';
 import PlacedOrders from './Orders/PlacedOrders';
+import UsersList from './Admin/UsersList';
 
 function App() {
   return (
@@ -32,13 +33,14 @@ function App() {
               path='/products/:productId'
               element={<ProductPage />}
             ></Route>
-            <Route path='/order/:orderid' element={<PlacedOrders />}></Route>
             <Route path='/upload' element={<UploadProductPage />}></Route>
             <Route path='/shipping/' element={<Shipping />}></Route>
             <Route path='/payment/' element={<PaymentScreen />}></Route>
             <Route path='/placeorder/' element={<PlaceOrder />}></Route>
+            <Route path='/order/:orderid' element={<PlacedOrders />}></Route>
             <Route path='/cart/' element={<Cart />}></Route>
             <Route path='/cart/:productId' element={<Cart />}></Route>
+            <Route path='/admin/userList' element={<UsersList />}></Route>
           </Routes>
           <ToastContainer />
         </Container>
