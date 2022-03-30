@@ -50,7 +50,7 @@ const ProductList = () => {
     if (successCreate) {
       navigate(`/admin/product/${createdProduct._id}/edit`);
     } else {
-      dispatch(listProducts('', pageNumber));
+      dispatch(listProducts());
     }
   }, [
     dispatch,
@@ -58,8 +58,7 @@ const ProductList = () => {
     userInfo,
     successDelete,
     successCreate,
-    createdProduct,
-    pageNumber,
+    createProduct,
   ]);
 
   const deleteHandler = (id) => {

@@ -20,6 +20,7 @@ import PlacedOrders from './Orders/PlacedOrders';
 import UsersList from './Admin/UsersList';
 import UserEdit from './Admin/UserEdit';
 import ProductList from './Admin/ProductList';
+import ProductEdit from './Admin/ProductEdit';
 
 function App() {
   return (
@@ -48,6 +49,10 @@ function App() {
               element={<UserEdit />}
             ></Route>
             <Route path='/admin/productlist' element={<ProductList />}></Route>
+            <Route
+              path='/admin/product/:productId/edit'
+              element={<ProductEdit />}
+            ></Route>
           </Routes>
           <ToastContainer />
         </Container>
