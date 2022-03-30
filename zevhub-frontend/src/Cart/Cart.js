@@ -33,10 +33,10 @@ function Cart() {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  console.log(cartItems);
+  console.log(cart);
 
   const checkoutHandler = () => {
-    navigate('/login?redirect=shipping');
+    navigate('/shipping');
   };
   // const state = useSelector((state) => state);
   // console.log(state);
@@ -67,6 +67,7 @@ function Cart() {
                       <Link to={`/product/${item.product}`}>{item.title}</Link>
                     </Col>
                     <Col md={2}>${item.price}</Col>
+
                     <Col md={2}>
                       <Form.Control
                         as='select'

@@ -6,7 +6,7 @@ import FormContainer from '../Components/FormContainer';
 import CheckoutSteps from './Checkoutsteps';
 import { savePaymentMethod } from '../actions/cartActions';
 
-const PaymentScreen = ({ history }) => {
+const PaymentScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
   const navigate = useNavigate();

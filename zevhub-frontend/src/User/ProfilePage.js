@@ -47,7 +47,7 @@ const ProfilePage = () => {
         setEmail(user.email);
       }
     }
-  }, [dispatch, navigate, userInfo, user, success]);
+  }, [dispatch, navigate, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -167,6 +167,10 @@ const ProfilePage = () => {
             </tbody>
           </Table>
         )} */}
+      </Col>
+      <Col md={9}>
+        {' '}
+        <h2>My Orders</h2>
       </Col>
     </Row>
   );
