@@ -18,6 +18,7 @@ import PaymentScreen from './Cart/Payment';
 import PlaceOrder from './Cart/PlaceOrder';
 import PlacedOrders from './Orders/PlacedOrders';
 import UsersList from './Admin/UsersList';
+import UserEdit from './Admin/UserEdit';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path='/cart/' element={<Cart />}></Route>
             <Route path='/cart/:productId' element={<Cart />}></Route>
             <Route path='/admin/userList' element={<UsersList />}></Route>
+            <Route path='/admin/user/:userId/edit' component={UserEdit} />
           </Routes>
           <ToastContainer />
         </Container>
