@@ -17,13 +17,22 @@ const UsersList = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {
       navigate('/');
     }
-  }, [dispatch, userInfo]);
+  }, [dispatch, userInfo, successDelete]);
+
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure')) {
+      dispatch(deleteUser(id));
+    }
+  };
 
   return (
     <>
@@ -67,7 +76,7 @@ const UsersList = () => {
                   <Button
                     variant='danger'
                     className='btn-sm'
-                    // onClick={() => deleteHandler(user._id)}
+                    onClick={() => deleteHandler(user._id)}
                   >
                     <i className='fas fa-trash'></i>
                   </Button>
