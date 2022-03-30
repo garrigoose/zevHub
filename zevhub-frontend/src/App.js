@@ -19,6 +19,7 @@ import PlaceOrder from './Cart/PlaceOrder';
 import PlacedOrders from './Orders/PlacedOrders';
 import UsersList from './Admin/UsersList';
 import UserEdit from './Admin/UserEdit';
+import ProductList from './Admin/ProductList';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               path='/admin/user/:userId/edit'
               element={<UserEdit />}
             ></Route>
+            <Route path='/admin/productlist' element={<ProductList />}></Route>
           </Routes>
           <ToastContainer />
         </Container>
