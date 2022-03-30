@@ -42,7 +42,10 @@ function App() {
             <Route path='/cart/' element={<Cart />}></Route>
             <Route path='/cart/:productId' element={<Cart />}></Route>
             <Route path='/admin/userList' element={<UsersList />}></Route>
-            <Route path='/admin/user/:userId/edit' component={UserEdit} />
+            <Route
+              path='/admin/user/:userId/edit'
+              element={<UserEdit />}
+            ></Route>
           </Routes>
           <ToastContainer />
         </Container>
