@@ -21,6 +21,7 @@ import UserEdit from './Admin/UserEdit';
 import ProductList from './Admin/ProductList';
 import ProductEdit from './Admin/ProductEdit';
 import OrderList from './Admin/OrderList';
+import Order from './Orders/Order';
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
             <Route path='/shipping/' element={<Shipping />}></Route>
             <Route path='/payment/' element={<PaymentScreen />}></Route>
             <Route path='/placeorder/' element={<PlaceOrder />}></Route>
-            <Route path='/order/:orderid' element={<PlacedOrders />}></Route>
+            <Route path='/order/:orderId' element={<Order />}></Route>
             <Route path='/cart/' element={<Cart />}></Route>
             <Route path='/cart/:productId' element={<Cart />}></Route>
             <Route path='/admin/userList' element={<UsersList />}></Route>

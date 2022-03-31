@@ -87,11 +87,11 @@ const Header = () => {
                 <NavDropdown title='Sell' id='navbarScrollingDropdown'>
                   <LinkContainer to='/sell'>
                     <NavDropdown.Item href='#action3' onClick={navToPost}>
-                      Post Item
+                      Manage Items
                     </NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item href='#action4'>
-                    Manage Items
+                    Manage Sales
                   </NavDropdown.Item>
                 </NavDropdown>
 

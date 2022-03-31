@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../Components/Message';
 import CheckoutSteps from './Checkoutsteps';
 import { createOrder } from '../actions/orderActions';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+import { USER_DETAILS_RESET } from '../constants/userConstants';
 
 const PlaceOrder = () => {
   const dispatch = useDispatch();
@@ -36,8 +38,10 @@ const PlaceOrder = () => {
 
   useEffect(() => {
     if (success) {
-      //   navigate(`/order/${order._id}`);
+      navigate(`/order/${order._id}`);
       console.log(state);
+      dispatch({ type: USER_DETAILS_RESET });
+      dispatch({ type: ORDER_CREATE_RESET });
     }
     // eslint-disable-next-line
   }, [history, success]);
