@@ -14,7 +14,7 @@ const HomePage = () => {
         <Image src={headerImage} id='header-image'></Image>
       </div>
       <HomePageCards />
-      <CategoryAccordian />
+      {/* <CategoryAccordian /> */}
     </div>
   );
 };

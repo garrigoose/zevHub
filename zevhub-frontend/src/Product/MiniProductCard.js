@@ -1,19 +1,30 @@
-import React from 'react';
+import '../App.css';
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Rating from './Rating';
 
-const MiniProductCard = () => {
+const MiniProductCard = ({ product }) => {
+  const productId = product._id;
+
   return (
-    <div>
-      <Card>
+    <Card className='my-3 p-3 rounded border-0'>
+      <Link to={`/products/${productId}`}>
         <Card.Img
           variant='top'
-          src='https://cdn.shopify.com/s/files/1/0232/5683/products/Had_Carbon_Street_4_2048x2048.jpg?v=1628563362'
+          src={product.image}
+          alt='product image'
+          className='product-image'
         />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-        </Card.Body>
-      </Card>
-    </div>
+      </Link>
+
+      <Card.Body>
+        <Link to={`/products/${product._id}`}>
+          <Card.Title as='div'>
+            <strong>{product.title}</strong>
+          </Card.Title>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -10,7 +10,6 @@ import HomePage from './Components/HomePage';
 import ResultsView from './Components/ResultsView';
 import ProductPage from './Product/ProductPage';
 import Footer from './Components/Footer';
-import UploadProductPage from './Product/UploadProduct';
 import Cart from './Cart/Cart';
 import ProfilePage from './User/ProfilePage';
 import Shipping from './Cart/Shipping';
@@ -21,6 +20,7 @@ import UsersList from './Admin/UsersList';
 import UserEdit from './Admin/UserEdit';
 import ProductList from './Admin/ProductList';
 import ProductEdit from './Admin/ProductEdit';
+import OrderList from './Admin/OrderList';
 
 function App() {
   return (
@@ -36,7 +36,6 @@ function App() {
               path='/products/:productId'
               element={<ProductPage />}
             ></Route>
-            <Route path='/upload' element={<UploadProductPage />}></Route>
             <Route path='/shipping/' element={<Shipping />}></Route>
             <Route path='/payment/' element={<PaymentScreen />}></Route>
             <Route path='/placeorder/' element={<PlaceOrder />}></Route>
@@ -48,6 +47,7 @@ function App() {
               path='/admin/user/:userId/edit'
               element={<UserEdit />}
             ></Route>
+            <Route path='/admin/orderlist' element={<OrderList />}></Route>
             <Route path='/admin/productlist' element={<ProductList />}></Route>
             <Route
               path='/admin/product/:productId/edit'
