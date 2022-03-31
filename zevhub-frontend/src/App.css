@@ -64,3 +64,8 @@ h2 {
 main {
   min-height: 80vh;
 }
+
+.search-form {
+  width: 100%;
+  display: flex;
+}

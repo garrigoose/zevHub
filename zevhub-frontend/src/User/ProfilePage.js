@@ -6,8 +6,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Message from '../Components/Message';
 import Loader from '../Components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
-// import { listMyOrders } from '../actions/orderActions';
-// import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import { listMyOrders } from '../actions/orderActions';
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const ProfilePage = () => {
   const [name, setName] = useState('');
@@ -31,23 +31,26 @@ const ProfilePage = () => {
   console.log(state);
   const { success } = userUpdateProfile;
 
-  //   const orderListMy = useSelector((state) => state.orderListMy);
-  //   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+  const orderListMy = useSelector((state) => state.orderListMy);
+  console.log(orderListMy);
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
   useEffect(() => {
     if (!userInfo) {
       navigate('/login');
+      console.log('hit the other clause');
     } else {
       if (!user || !user.name || success) {
-        // dispatch({ type: USER_UPDATE_PROFILE_RESET });
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails('profile'));
-        // dispatch(listMyOrders());
+        dispatch(listMyOrders());
+        console.log('hit else statement');
       } else {
         setName(user.name);
         setEmail(user.email);
       }
     }
-  }, [dispatch, navigate, success]);
+  }, [dispatch, navigate, success, user, userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -119,7 +122,7 @@ const ProfilePage = () => {
       </Col>
       <Col md={9}>
         <h2>My Orders</h2>
-        {/* {loadingOrders ? (
+        {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
@@ -166,11 +169,7 @@ const ProfilePage = () => {
               ))}
             </tbody>
           </Table>
-        )} */}
-      </Col>
-      <Col md={9}>
-        {' '}
-        <h2>My Orders</h2>
+        )}
       </Col>
     </Row>
   );

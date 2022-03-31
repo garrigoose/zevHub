@@ -22,6 +22,7 @@ import ProductList from './Admin/ProductList';
 import ProductEdit from './Admin/ProductEdit';
 import OrderList from './Admin/OrderList';
 import Order from './Orders/Order';
+import SearchResults from './Components/SearchResults';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <main className='App'>
         <Container>
           <Routes>
+            <Route path='/search/:keyword' element={<SearchResults />} />
             <Route path='/' element={<HomePage />}></Route>
             <Route path='/profile' element={<ProfilePage />}></Route>
             <Route path='/products' element={<ResultsView />}></Route>

@@ -12,8 +12,8 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productsConstants';
 const ProductEdit = () => {
   const [imageSelected, setImageSelected] = useState('');
   const { productId } = useParams();
-
-  const [name, setName] = useState('');
+  const [imageAddress, setImageAddress] = useState('');
+  const [title, setTitle] = useState('');
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
   const [brand, setBrand] = useState('');
@@ -43,7 +43,7 @@ const ProductEdit = () => {
       if (!product.title || product._id !== productId) {
         dispatch(listProductDetails(productId));
       } else {
-        setName(product.title);
+        setTitle(product.title);
         setPrice(product.price);
         setImage(product.image);
         setBrand(product.brand);
@@ -55,12 +55,12 @@ const ProductEdit = () => {
   }, [dispatch, navigate, productId, product, successUpdate]);
 
   const uploadFileHandler = async (e) => {
-    console.log(imageSelected);
-    // const file = e.target.files[0];
+    e.preventDefault();
     const formData = new FormData();
-    formData.append('image', imageSelected);
+    formData.append('file', imageSelected);
     formData.append('upload_preset', 'zevhub');
-    setUploading(true);
+    formData.append('cloud_title', 'garrigoose');
+    // setUploading(true);
 
     const CLOUDINARY_URL =
       'cloudinary://178822214341493:IzEe4tpUeSnMNbtnlfRDehbhckA@garrigoose';
@@ -69,30 +69,23 @@ const ProductEdit = () => {
       'https://api.cloudinary.com/v1_1/garrigoose/image/upload',
       formData
     );
-    console.log(data);
+    setImage(data.url);
 
-    // Axios.post(
-    //   'https://api.cloudinary.com/v1_1/garrigoose/image/upload',
-    //   formData
-    // ).then((res) => {
-    //   console.log(res);
-    // });
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
 
-    // try {
-    //   const config = {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   };
+      const { data } = await axios.post('/api/upload', formData, config);
 
-    //   const { data } = await axios.post('/api/upload', formData, config);
-
-    //   setImage(data);
-    //   setUploading(false);
-    // } catch (error) {
-    //   console.error(error);
-    //   setUploading(false);
-    // }
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
   };
 
   const submitHandler = (e) => {
@@ -100,7 +93,7 @@ const ProductEdit = () => {
     dispatch(
       updateProduct({
         _id: productId,
-        name,
+        title,
         price,
         image,
         brand,
@@ -113,18 +106,6 @@ const ProductEdit = () => {
 
   return (
     <>
-      <div>
-        <input
-          className='form-control'
-          type='file'
-          id='image-file'
-          custom='true'
-          onChange={(e) => {
-            setImageSelected(e.target.files[0]);
-          }}
-        ></input>
-        <button onClick={uploadFileHandler}>Upload Image</button>
-      </div>
       <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
       </Link>
@@ -138,13 +119,13 @@ const ProductEdit = () => {
           <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
+            <Form.Group controlId='title'>
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type='name'
-                placeholder='Enter name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                type='title'
+                placeholder='Enter title'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
@@ -164,9 +145,19 @@ const ProductEdit = () => {
                 type='text'
                 placeholder='Enter image url'
                 value={image}
-                // onChange={(e) => setImage(e.target.value)}
-                onChange={(e) => setImageSelected(e.target.files)}
+                onChange={(e) => setImage(e.target.value)}
+                // onChange={(e) => setImageSelected(e.target.files)}
               ></Form.Control>
+              <input
+                className='form-control'
+                type='file'
+                id='image-file'
+                custom='true'
+                onChange={(e) => {
+                  setImageSelected(e.target.files[0]);
+                }}
+              ></input>
+              <Button onClick={uploadFileHandler}>Upload Image</Button>
               {/* <Form.File
                 id='image-file'
                 label='Choose File'

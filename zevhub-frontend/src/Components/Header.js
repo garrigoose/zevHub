@@ -1,6 +1,6 @@
 import '../App.css';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
   Nav,
@@ -19,18 +19,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaUser, FaSignInAlt, FaSearch } from 'react-icons/fa';
 import LoginForm from '../User/LoginForm';
 import RegisterForm from '../User/RegisterForm';
+import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
 
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [keyword, setKeyword] = useState('');
   // const [currentUser, setCurrentUser] = useState('User');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  console.log(userInfo);
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -49,6 +50,16 @@ const Header = () => {
   function navToPost() {
     navigate('/upload');
   }
+
+  const submitHandler = (e) => {
+    console.log(keyword);
+    e.preventDefault();
+    if (keyword.trim()) {
+      navigate(`/search/${keyword}`);
+    } else {
+      navigate('/');
+    }
+  };
 
   // userInfo.name = userLogin.userInfo.name;
   // useEffect(() => {
@@ -110,18 +121,20 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
             </Container>
+
             {/* right side of nav */}
             <Container className='d-flex justify-content-end'>
               {/* search form */}
-              <Form className='d-flex'>
-                <FormControl
-                  type='search'
-                  placeholder='Search'
-                  className='me-2 border-0'
-                  aria-label='Search'
-                />
-                <Button bg='dark' variant='dark'>
-                  <FaSearch />
+              <Form onSubmit={submitHandler} className='search-form'>
+                <Form.Control
+                  type='text'
+                  name='q'
+                  onChange={(e) => setKeyword(e.target.value)}
+                  placeholder='Search Products...'
+                  className='mr-sm-2 ml-sm-5'
+                ></Form.Control>
+                <Button type='submit' variant='outline-success' className='p-2'>
+                  Search
                 </Button>
               </Form>
 
