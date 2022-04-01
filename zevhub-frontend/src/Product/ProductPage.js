@@ -73,7 +73,7 @@ function ProductPage({ history }) {
 
   return (
     <Container>
-      <Link className='btn' variant='outline-success' to='/'>
+      <Link className='btn mt-2' variant='outline-success' to='/'>
         Go Back
       </Link>
       {loading ? (
@@ -82,11 +82,11 @@ function ProductPage({ history }) {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-          <Row>
+          <Row className='mt-2'>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
-            <Col md={3}>
+            <Col md={6}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h3>{product.title}</h3>
@@ -148,7 +148,7 @@ function ProductPage({ history }) {
               </ListGroup>
             </Col>
           </Row>
-          <Row>
+          <Row className='justify-content-center'>
             <Col md={6}>
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
