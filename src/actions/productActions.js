@@ -246,12 +246,14 @@ export const listTopProducts = () => async (dispatch) => {
     dispatch({ type: PRODUCT_TOP_REQUEST });
 
     const { data } = await axios.get(`/api/products/top`);
+    console.log(data);
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
       payload: data,
     });
   } catch (error) {
+    console.log('catch block hit');
     dispatch({
       type: PRODUCT_TOP_FAIL,
       payload:

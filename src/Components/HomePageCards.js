@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { Card, CardGroup, Col, Row, Container } from 'react-bootstrap';
 import Message from './Message';
 import Loader from './Loader';
+import Paginate from './Paginate';
+import ProductCarousel from '../Components/ProductCarousel';
 import ProductCard from '../Product/ProductCard';
 import { listProducts } from '../actions/productActions';
 
@@ -19,6 +21,7 @@ const HomePageCards = () => {
   return (
     <div className='pt-5 px-5'>
       <Container fluid>
+        <ProductCarousel />
         <h1>Latest Products</h1>
         <CardGroup className='gap-4'>
           {loading ? (

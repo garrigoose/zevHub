@@ -16,7 +16,6 @@
 - React
 - Redux
 - Bootstrap
-- Axios
 
 **Back-End**
 
