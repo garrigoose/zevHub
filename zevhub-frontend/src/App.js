@@ -29,16 +29,13 @@ function App() {
     <>
       <Header />
       <main className='App'>
-        <Container>
+        <Container flex>
           <Routes>
             <Route path='/search/:keyword' element={<SearchResults />} />
             <Route path='/' element={<HomePage />}></Route>
             <Route path='/profile' element={<ProfilePage />}></Route>
             <Route path='/products' element={<ResultsView />}></Route>
-            <Route
-              path='/products/:productId'
-              element={<ProductPage />}
-            ></Route>
+            <Route path='/product/:productId' element={<ProductPage />}></Route>
             <Route path='/shipping/' element={<Shipping />}></Route>
             <Route path='/payment/' element={<PaymentScreen />}></Route>
             <Route path='/placeorder/' element={<PlaceOrder />}></Route>
