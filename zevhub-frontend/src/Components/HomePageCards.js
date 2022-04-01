@@ -17,8 +17,8 @@ const HomePageCards = () => {
   }, [dispatch]);
 
   return (
-    <div className='pt-5'>
-      <Container>
+    <div className='pt-5 px-5'>
+      <Container fluid>
         <h1>Latest Products</h1>
         <CardGroup className='gap-4'>
           {loading ? (

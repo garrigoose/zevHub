@@ -28,8 +28,8 @@ function App() {
   return (
     <>
       <Header />
-      <main className='App'>
-        <Container flex>
+      <main className='App w-100'>
+        <Container fluid className='w-100 p-0'>
           <Routes>
             <Route path='/search/:keyword' element={<SearchResults />} />
             <Route path='/' element={<HomePage />}></Route>

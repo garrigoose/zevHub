@@ -8,8 +8,8 @@ import { Container } from 'react-bootstrap';
 
 const HomePage = () => {
   return (
-    <Container flex>
-      <CategoriesBar className='d-sm-none d-md-none d-lg-block' />
+    <Container fluid className='w-100 p-0'>
+      <CategoriesBar fluid className='d-sm-none d-md-none d-lg-block w-100' />
       <div id='header-image-div'>
         <Image src={headerImage} id='header-image'></Image>
       </div>
