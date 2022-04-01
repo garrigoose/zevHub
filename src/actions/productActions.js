@@ -247,7 +247,9 @@ export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST });
 
-    const { data } = await axios.get(`/api/products/top`);
+    const { data } = await axios.get(
+      `https://zevhub-backend.herokuapp.com/api/products/top`
+    );
     console.log(data);
 
     dispatch({
