@@ -14,11 +14,11 @@ const CategoriesBar = () => {
             The Electric Mobility Marketplace
           </Navbar.Brand>
           <Nav className='me-auto'>
-            <Nav.Link href='#cars'>Cars</Nav.Link>
-            <Nav.Link href='#bikes'>Bikes</Nav.Link>
-            <Nav.Link href='#scooters'>Scooters</Nav.Link>
-            <Nav.Link href='#skateboards'>Skateboards</Nav.Link>
-            <Nav.Link href='#accessories'>Accessories</Nav.Link>
+            <Nav.Link href='/search/cars'>Cars</Nav.Link>
+            <Nav.Link href='/search/bikes'>Bikes</Nav.Link>
+            <Nav.Link href='/search/scooters'>Scooters</Nav.Link>
+            <Nav.Link href='/search/skateboards'>Skateboards</Nav.Link>
+            <Nav.Link href='/search/accessories'>Accessories</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

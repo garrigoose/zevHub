@@ -19,7 +19,6 @@ const SearchResults = () => {
 
   useEffect(() => {
     dispatch(listProducts(keyword));
-    console.log('keyword fired from SearchResults:  ', keyword);
     setSearchResults(
       products.filter((p) =>
         p.title.toLowerCase().includes(keyword.toLowerCase())
