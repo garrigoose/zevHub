@@ -7,7 +7,9 @@ import {
 } from '../constants/cartConstants';
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/products/${id}`);
+  const { data } = await axios.get(
+    `https://zevhub-backend.herokuapp.com/api/products/${id}`
+  );
   console.log('data', data);
 
   dispatch({

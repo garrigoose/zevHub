@@ -52,7 +52,9 @@ export const listProducts = () => async (dispatch) => {
 export const searchProducts = (keyword) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_SEARCH_REQUEST });
-    const { data } = await axios.get(`/api/products/search=:${keyword}`);
+    const { data } = await axios.get(
+      `https://zevhub-backend.herokuapp.com/api/products/search=:${keyword}`
+    );
     console.log(data);
     dispatch({
       type: PRODUCT_SEARCH_SUCCESS,
@@ -72,7 +74,9 @@ export const searchProducts = (keyword) => async (dispatch) => {
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/products/${id}`);
+    const { data } = await axios.get(
+      `https://zevhub-backend.herokuapp.com/api/products/${id}`
+    );
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -105,7 +109,10 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/products/${id}`, config);
+    await axios.delete(
+      `https://zevhub-backend.herokuapp.com/api/products/${id}`,
+      config
+    );
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
@@ -141,7 +148,11 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products`, {}, config);
+    const { data } = await axios.post(
+      `https://zevhub-backend.herokuapp.com/api/products`,
+      {},
+      config
+    );
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -180,7 +191,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/products/${product._id}`,
+      `https://zevhub-backend.herokuapp.com/api/products/${product._id}`,
       product,
       config
     );
@@ -223,7 +234,11 @@ export const createProductReview =
         },
       };
 
-      await axios.post(`/api/products/${productId}/reviews`, review, config);
+      await axios.post(
+        `https://zevhub-backend.herokuapp.com/api/products/${productId}/reviews`,
+        review,
+        config
+      );
 
       dispatch({
         type: PRODUCT_CREATE_REVIEW_SUCCESS,
