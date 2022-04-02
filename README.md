@@ -148,3 +148,7 @@
 | index  | GET    | /orders/myorders      | fetch all orders for 1 user      |
 | update | PUT    | /orders/:id/pay       | update pay info for 1 order      |
 | update | PUT    | /orders/id/deliver    | update delivery info for 1 order |
+
+### Resources
+
+-[MDN](https://developer.mozilla.org/en-US/) -[W3Schools](https://www.w3schools.com/) -[GeeksforGeeks](https://www.geeksforgeeks.org/d) -[Traversy Media](https://www.traversymedia.com/) -[React Docs](https://reactjs.org/docs/getting-started.html) -[Bootstrap Docs](https://getbootstrap.com/docs/4.1/getting-started/introduction/) -[Redux Docs](https://redux.js.org/) -[Billie & Matt & Paresh](https://git.generalassemb.ly/Flex-928)
