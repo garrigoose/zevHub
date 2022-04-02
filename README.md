@@ -1,5 +1,3 @@
-# zevHub
-
 # [zevHub](https://zevhub-frontend.herokuapp.com/)
 
 ## Electric Vehicle Marketplace
@@ -17,7 +15,9 @@
 ## Approach
 
 > For the backend api I took an approach of keeping components seperate and legible. This means seperate files for the controllers and routes, which was accomplished by a functional approach to routing and passing the semantically-named functions to the routing file.
+
 > For the frontend a similar architecture was used folling the React methodology of encapsulting components and UI elements into folders. In order to manage state Redux was implemented with a pattern of seperate actions, reducers, constants and a centrallized store.
+
 > The UI is a simple user-focused interface similar to most eCommerce applications. Currently, the admin is the only user type with their own custom dashboard in which they can manage users, products and orders. Styling is done minimally with Bootstrap for React in order to keep the interface unencumbered.
 
 ### Technologies
