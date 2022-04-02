@@ -122,3 +122,29 @@
 - Redux. Learning Redux for state management. Learning and following the same pattern for each type fo data in global state was a challenge.
 - Styling. Might need to take some lessons on modern styling. Though implementing a loading spinner in CSS was very informative.
 - Deployment - file structure is very important for a smooth deployment.
+
+### Routes
+
+| ACTION | METHOD | PATH                  | DESCRIPTION                      |
+| ------ | ------ | --------------------- | -------------------------------- |
+| index  | GET    | /products/            | fetch all products in db         |
+| show   | GET    | /products/:id         | fetch 1 product by id            |
+| create | POST   | /products/            | create a new product entry in db |
+| update | PUT    | products/:id          | update a product in db           |
+| delete | DELETE | products/:id          | delete a product in db           |
+| create | POST   | /products/:id/reviews | add a review to a product        |
+| ------ | ------ | ----                  | -----------                      |
+| index  | GET    | /users/               | fetch all users                  |
+| show   | GET    | /users/:id            | fetch 1 user                     |
+| create | POST   | /users/               | register a new user              |
+| update | POST   | /users/login          | login a user                     |
+| update | PUT    | /users/:id            | edit 1 user by admin             |
+| delete | DELETE | /users/:id            | delete 1 user                    |
+| update | PUT    | /users/profile        | edit 1 user by user              |
+| ------ | ------ | ----                  | -----------                      |
+| index  | GET    | /orders/              | fetch all orders by admin        |
+| create | POST   | /orders/              | create an order                  |
+| show   | GET    | /orders/:id           | fetch 1 order                    |
+| index  | GET    | /orders/myorders      | fetch all orders for 1 user      |
+| update | PUT    | /orders/:id/pay       | update pay info for 1 order      |
+| update | PUT    | /orders/id/deliver    | update delivery info for 1 order |
