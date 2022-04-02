@@ -151,4 +151,11 @@
 
 ### Resources
 
--[MDN](https://developer.mozilla.org/en-US/) -[W3Schools](https://www.w3schools.com/) -[GeeksforGeeks](https://www.geeksforgeeks.org/d) -[Traversy Media](https://www.traversymedia.com/) -[React Docs](https://reactjs.org/docs/getting-started.html) -[Bootstrap Docs](https://getbootstrap.com/docs/4.1/getting-started/introduction/) -[Redux Docs](https://redux.js.org/) -[Billie & Matt & Paresh](https://git.generalassemb.ly/Flex-928)
+- [MDN](https://developer.mozilla.org/en-US/)
+- [W3Schools](https://www.w3schools.com/)
+- [GeeksforGeeks](https://www.geeksforgeeks.org/d)
+- [Traversy Media](https://www.traversymedia.com/)
+- [React Docs](https://reactjs.org/docs/getting-started.html)
+- [Bootstrap Docs](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+- [Redux Docs](https://redux.js.org/)
+- [Billie & Matt & Paresh](https://git.generalassemb.ly/Flex-928)
