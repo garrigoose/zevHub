@@ -23,6 +23,7 @@ import ProductEdit from './Admin/ProductEdit';
 import OrderList from './Admin/OrderList';
 import Order from './Orders/Order';
 import SearchResults from './Components/SearchResults';
+import CategoryResults from './Components/CategoryResults';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <main className='App w-100'>
         <Container fluid className='w-100 p-0'>
           <Routes>
+            <Route path='/categories/:category' element={<CategoryResults />} />
             <Route path='/search/:keyword' element={<SearchResults />} />
             <Route path='/' element={<HomePage />}></Route>
             <Route path='/profile' element={<ProfilePage />}></Route>

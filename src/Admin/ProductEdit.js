@@ -207,12 +207,24 @@ const ProductEdit = () => {
 
             <Form.Group controlId='category'>
               <Form.Label>Category</Form.Label>
-              <Form.Control
+              <Form.Select
+                aria-label='Default select example'
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option>Select a category</option>
+                <option value='cars'>Cars</option>
+                <option value='bikes'>Bikes</option>
+                <option value='scooters'>Scooters</option>
+                <option value='skateboards'>Skateboards</option>
+                <option value='accessories'>Accessories</option>
+              </Form.Select>
+              {/* <Form.Control
                 type='text'
                 placeholder='Enter category'
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
+              ></Form.Control> */}
             </Form.Group>
 
             <Form.Group controlId='description'>

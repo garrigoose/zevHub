@@ -1,6 +1,6 @@
 import '../App.css';
 import { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
   Nav,
@@ -108,16 +108,32 @@ const Header = () => {
 
                 {/* shop dropdown */}
                 <NavDropdown title='Shop' id='navbarScrollingDropdown'>
-                  <NavDropdown.Item href='#action3'>All</NavDropdown.Item>
-                  <NavDropdown.Item href='#action3'>Cars</NavDropdown.Item>
-                  <NavDropdown.Item href='#action4'>Bikes</NavDropdown.Item>
-                  <NavDropdown.Item href='#action5'>Scooters</NavDropdown.Item>
-                  <NavDropdown.Item href='#action6'>
-                    Skateboards
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href='#action7'>
-                    Accessories
-                  </NavDropdown.Item>
+                  <NavDropdown.Item href='/'>All</NavDropdown.Item>
+                  <Link to='/categories/cars'>
+                    <NavDropdown.Item href='/categories/cars'>
+                      Cars
+                    </NavDropdown.Item>
+                  </Link>
+                  <Link to='/categories/bikes'>
+                    <NavDropdown.Item href='/categories/bikes'>
+                      Bikes
+                    </NavDropdown.Item>
+                  </Link>
+                  <Link to='/categories/scooters'>
+                    <NavDropdown.Item href='/categories/scooters'>
+                      Scooters
+                    </NavDropdown.Item>
+                  </Link>
+                  <Link to='/categories/skateboards'>
+                    <NavDropdown.Item href='/categories/skateboards'>
+                      Skateboards
+                    </NavDropdown.Item>
+                  </Link>
+                  <Link to='/categories/accessories'>
+                    <NavDropdown.Item href='/categories/accessories'>
+                      Accessories
+                    </NavDropdown.Item>
+                  </Link>
                 </NavDropdown>
               </Nav>
             </Container>

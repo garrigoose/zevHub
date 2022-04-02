@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const CategoriesBar = () => {
   return (
@@ -14,11 +15,21 @@ const CategoriesBar = () => {
             The Electric Mobility Marketplace
           </Navbar.Brand>
           <Nav className='me-auto'>
-            <Nav.Link href='/search/cars'>Cars</Nav.Link>
-            <Nav.Link href='/search/bikes'>Bikes</Nav.Link>
-            <Nav.Link href='/search/scooters'>Scooters</Nav.Link>
-            <Nav.Link href='/search/skateboards'>Skateboards</Nav.Link>
-            <Nav.Link href='/search/accessories'>Accessories</Nav.Link>
+            <Link to='/categories/Cars'>
+              <Nav.Link href='/categories/cars'>Cars</Nav.Link>
+            </Link>
+            <Link to='/categories/Bikes'>
+              <Nav.Link href='/categories/bikes'>Bikes</Nav.Link>
+            </Link>
+            <Link to='/categories/Scooters'>
+              <Nav.Link href='/categories/scooters'>Scooters</Nav.Link>
+            </Link>
+            <Link to='/categories/Skateboards'>
+              <Nav.Link href='/categories/skateboards'>Skateboards</Nav.Link>
+            </Link>
+            <Link to='/categories/Accessories'>
+              <Nav.Link href='/categories/accessories'>Accessories</Nav.Link>
+            </Link>
           </Nav>
         </Container>
       </Navbar>

@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 const CategoryResults = () => {
   const dispatch = useDispatch();
-  const { keyword } = useParams();
+  const { category } = useParams();
   const [categoryResults, setCategoryResults] = useState([]);
 
   const productList = useSelector((state) => state.productList);
@@ -18,13 +18,13 @@ const CategoryResults = () => {
   console.log(state);
 
   useEffect(() => {
-    dispatch(listProducts(keyword));
+    dispatch(listProducts(category));
     setCategoryResults(
       products.filter((p) =>
-        p.title.toLowerCase().includes(keyword.toLowerCase())
+        p.category.toLowerCase().includes(category.toLowerCase())
       )
     );
-  }, [dispatch, keyword]);
+  }, [dispatch, category]);
 
   return (
     <div className='pt-5'>
