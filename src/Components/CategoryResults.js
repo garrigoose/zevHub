@@ -29,7 +29,7 @@ const CategoryResults = () => {
   return (
     <div className='pt-5'>
       <Container>
-        <h1>Search Results</h1>
+        <h1>{category[0].toUpperCase() + category.substring(1)}</h1>
         <CardGroup className='gap-4'>
           {loading ? (
             <Loader />
