@@ -82,13 +82,13 @@ const Header = () => {
               Z E V H U B
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls='navbarScroll' />
-          <Navbar.Collapse id='navbarScroll'>
+          <Navbar.Toggle aria-controls='navbar' />
+          <Navbar.Collapse id='navbar'>
             <Container>
               <Nav
                 className='me-auto my-2 my-lg-0'
                 style={{ maxHeight: '100px' }}
-                navbarScroll
+                navbar
               >
                 <LinkContainer to='/'>
                   <Nav.Link>Home</Nav.Link>
@@ -107,7 +107,7 @@ const Header = () => {
                 </NavDropdown>
 
                 {/* shop dropdown */}
-                <NavDropdown title='Shop' id='navbarScrollingDropdown'>
+                <NavDropdown title='Shop' id='navbarDropdown'>
                   <NavDropdown.Item href='/'>All</NavDropdown.Item>
                   <Link to='/categories/cars'>
                     <NavDropdown.Item href='/categories/cars'>
@@ -152,7 +152,7 @@ const Header = () => {
                 <Button
                   type='submit'
                   variant='outline-primary'
-                  className='p-2 ml-1'
+                  className='p-2 ml-1 border-0'
                 >
                   Search
                 </Button>
